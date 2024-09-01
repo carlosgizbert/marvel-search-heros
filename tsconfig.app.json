@@ -31,7 +31,8 @@
       "@/contexts/*": ["src/tasteless/contexts/*"],
       "@/services/*": ["src/services/*"],
       "@/ui/*": ["src/ui/*"],
-      "@/routes/*": ["src/routes/*"]
+      "@/routes/*": ["src/routes/*"],
+      "@/assets/*": ["src/assets/*"],
     },
   },
   "include": ["src"]

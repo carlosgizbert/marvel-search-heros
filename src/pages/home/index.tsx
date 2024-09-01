@@ -11,6 +11,7 @@ import {
   SearchIcon,
 } from "@/ui/components/atoms/icons";
 import { Typography } from "@/ui/components/atoms/typography";
+import logo from '@/assets/logo.svg'
 
 export function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -56,31 +57,32 @@ export function Home() {
   const hasMoreThanOneCharacter = characters.length > 1;
 
   return (
-    <Box>
-      <Box $gap={1} $align="center">
-        <div>
-          <span>Logo</span>
-          <span>Search heroes</span>
-        </div>
-        <Box $marginY={0} $gap={0.5} $align="center">
+    <Box $justify="center" $align="center" $gap={2}>
+      <Box $justify="center" $align="center" $gap={1.5}>
+        <Box $direction="row" $align="baseline" $justify="center">
+          <img src={logo} alt="Marvel Logo" />
+        </Box>
+        <Box $align="center" $gap={0.5}>
           <Typography size={24} $weight={700}>EXPLORE O UNIVERSO</Typography>
-          <span className="subtitle">
+          <Typography color="text20">
             Mergulhe no domínio deslumbrante de todos os personagens clássicos
             que você ama - e aqueles que você descobrirá em breve!
-          </span>
+          </Typography>
         </Box>
-        <SearchField
-          placeholder="Procure por heróis"
-          value={searchTerm}
-          onChange={({ target: { value } }) => setSearchTerm(value)}
-          onKeyDown={handleKeyDown}
-          startElement={<SearchIcon color="#ED1D24" />}
-        />
+        <Box $marginY={1}>
+          <SearchField
+            placeholder="Procure por heróis"
+            value={searchTerm}
+            onChange={({ target: { value } }) => setSearchTerm(value)}
+            onKeyDown={handleKeyDown}
+            startElement={<SearchIcon color="#ED1D24" />}
+          />
+        </Box>
       </Box>
-      <Box>
+      <Box $marginY={1}>
         <Box $gap={1} $direction="row" $align="center">
           <Box>
-            <Typography weight="600" color="text20">
+            <Typography $weight={600} color="text20">
               {characters.length} herói{hasMoreThanOneCharacter ? "s" : ""}{" "}
               encontrado{hasMoreThanOneCharacter ? "s" : ""}
             </Typography>

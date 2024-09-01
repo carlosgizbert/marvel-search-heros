@@ -22,7 +22,7 @@ export const Box = styled.div<{
   flex-direction: ${({ $direction = "column" }) => $direction};
   justify-content: ${({ $justify = "initial" }) => $justify};
   align-items: ${({ $align = "flex-start" }) => $align};
-  margin: ${({ $marginY = 0, $marginX = 0 }) => `${$marginY}px ${$marginX}px`};
+  margin: ${({ $marginY = 0, $marginX = 0 }) => `${$marginY}rem ${$marginX}rem`};
   margin-bottom: ${({ $marginBottom = 0 }) => `${$marginBottom}rem`};
   gap: ${({ $gap = 1 }) => `${$gap}rem`};
 `;

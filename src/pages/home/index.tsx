@@ -13,6 +13,9 @@ import {
 import { Typography } from "@/ui/components/atoms/typography";
 import logo from "@/assets/logo.svg";
 
+import * as S from './styles'
+import Skeleton from "@/ui/components/atoms/skeleton";
+
 export function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -54,9 +57,16 @@ export function Home() {
 
   const hasMoreThanOneCharacter = characters.length > 1;
   const disableToggleButton = searchTerm.length === 0;
+  const fetchingData = isLoading || isRefetching
 
   return (
-    <Box $justify="center" $align="center" $gap={2} $marginBottom={5}>
+    <Box
+      $justify="center"
+      $align="center"
+      $gap={2}
+      $marginBottom={5}
+      style={{ maxWidth: "1200px" }}
+    >
       <Box $justify="center" $align="center" $gap={1.5}>
         <Box $direction="row" $align="baseline" $justify="center">
           <img src={logo} alt="Marvel Logo" />
@@ -70,7 +80,7 @@ export function Home() {
             que você ama - e aqueles que você descobrirá em breve!
           </Typography>
         </Box>
-        <Box $marginY={1}>
+        <Box $marginY={1} style={{ maxWidth: "720px" }}>
           <SearchField
             placeholder="Procure por heróis"
             value={searchTerm}
@@ -83,21 +93,26 @@ export function Home() {
       <Box $marginY={1}>
         <Box $gap={1} $direction="row" $align="center">
           <Box>
-            <Typography $weight={600} color="text20">
+            {fetchingData && (
+              <Skeleton height={24} width={200} />
+            )}
+            {!fetchingData && (
+              <Typography $weight={600} color="text20">
               {characters.length} herói{hasMoreThanOneCharacter ? "s" : ""}{" "}
               encontrado{hasMoreThanOneCharacter ? "s" : ""}
             </Typography>
+            )}
           </Box>
           <Box $direction="row">
-            <Box $direction="row" $align="center" $gap={0.5}>
-              <Typography color="primary10">Ordenar por nome - A/Z</Typography>
+            <S.ToggleWrapper>
+              <Typography color={disableToggleButton ? 'gray20' : 'primary10'}>Ordenar por nome - A/Z</Typography>
               <Toggle
                 id="orderBy"
                 checked={!disableToggleButton}
                 disabled={disableToggleButton}
                 onChange={() => handleOrderBy()}
               />
-            </Box>
+            </S.ToggleWrapper>
             <Box
               $direction="row"
               $align="center"
@@ -113,7 +128,7 @@ export function Home() {
         <Box>
           <CharactersList
             data={characters}
-            isLoading={isLoading || isRefetching}
+            isLoading={fetchingData}
           />
         </Box>
       </Box>

@@ -17,6 +17,9 @@ function CharactersSkeletons() {
       <CharacterSkeleton />
       <CharacterSkeleton />
       <CharacterSkeleton />
+      <CharacterSkeleton />
+      <CharacterSkeleton />
+      <CharacterSkeleton />
     </>
   );
 }

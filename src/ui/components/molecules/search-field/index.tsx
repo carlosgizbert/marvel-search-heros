@@ -2,6 +2,7 @@ import {
   forwardRef,
   HTMLAttributes,
   InputHTMLAttributes,
+  KeyboardEvent,
   ReactNode,
 } from "react";
 import { Colors } from "@/ui/styles/tokens";
@@ -13,6 +14,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   $backgroundColor?: keyof Colors;
   $placeholderColor?: keyof Colors;
   $textColor?: keyof Colors;
+  $onPressEnter: () => void;
 }
 
 export const SearchField = forwardRef<HTMLInputElement, InputProps>(
@@ -23,14 +25,23 @@ export const SearchField = forwardRef<HTMLInputElement, InputProps>(
       $backgroundColor = "primary20",
       $textColor = "primary10",
       $placeholderColor = "primary10",
+      $onPressEnter,
       ...props
     },
     ref
   ) {
+    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        $onPressEnter();
+      }
+    };
+
     return (
       <S.Wrapper
         $backgroundColor={$backgroundColor}
         $placeholderColor={$placeholderColor}
+        onKeyDown={handleKeyDown}
         {...wrapperProps}
       >
         {startElement}

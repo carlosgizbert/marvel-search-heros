@@ -47,7 +47,7 @@ export const Label = styled('label')<LabelProps>`
     width: 16px;
     top: 50%;
     position: absolute;
-    left: 4px;
+    left: 8px;
     transform: translateY(-50%);
     border-radius: ${({ theme }) => theme.rounded.large};
     background-color: ${({ theme, $colorCircle }) => getColorValue(theme, $colorCircle)};

@@ -14,7 +14,6 @@ export function Character() {
 
   const { characterId } = useParams();
 
-
   return (
       <Box $gap={2}>
         Pesonagem

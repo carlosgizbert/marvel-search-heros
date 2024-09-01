@@ -5,6 +5,7 @@ export const Box = styled.div<{
   $marginX?: number;
   $gap?: number;
   $marginBottom?: number;
+  $maxWidth?: string;
   $align?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
   $direction?: "row" | "row-reverse" | "column" | "column-reverse";
   $justify?:
@@ -17,6 +18,7 @@ export const Box = styled.div<{
     | "initial";
 }>`
   width: 100%;
+  max-width: ${({ $maxWidth = '100%' }) => $maxWidth};
   height: auto;
   display: flex;
   flex-direction: ${({ $direction = "column" }) => $direction};

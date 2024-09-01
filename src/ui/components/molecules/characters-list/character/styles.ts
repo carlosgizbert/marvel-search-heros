@@ -12,6 +12,12 @@ export const Image = styled.span<{
   background-position: center center;
   background-repeat: no-repeat;
   border-radius: ${({ theme }) => `${theme.rounded.small} ${theme.rounded.small} 0 0`};
+
+  transition: box-shadow ease 0.4s;
+
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadowLevel.small};
+  }
 `;
 
 export const CharacterWrapper = styled.div`
@@ -19,6 +25,8 @@ export const CharacterWrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
   height: auto;
+
+  cursor: pointer;
 `
 
 export const Character = styled.div`

@@ -9,7 +9,7 @@ export interface SkeletonProps extends SkeletonCoreProps {
   dataTestId?: string
 }
 
-export default function Skeleton({
+export function Skeleton({
   dataTestId,
   ...props
 }: Readonly<SkeletonProps>) {

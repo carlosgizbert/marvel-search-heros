@@ -42,7 +42,7 @@ const roundedDefault: T.Rounded = {
 };
 
 const shadowLevelDefault: T.ShadowLevel = {
-  small: "10px 22px 24px rgba(0, 0, 0, 0.5)"
+  small: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px"
 };
 
 const fontFamilyDefault: T.FontFamily = {

@@ -9,13 +9,4 @@ export default defineConfig({
       '@': '/src',
     },
   },
-  server: {
-    proxy: {
-      '/api/marvel/images': {
-        target: 'https://i.annihil.us',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/marvel/, ''),
-      },
-    },
-  },
 });

@@ -4,6 +4,7 @@ export const Box = styled.div<{
   $marginY?: number;
   $marginX?: number;
   $gap?: number;
+  $marginBottom?: number;
   $align?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
   $direction?: "row" | "row-reverse" | "column" | "column-reverse";
   $justify?:
@@ -22,5 +23,6 @@ export const Box = styled.div<{
   justify-content: ${({ $justify = "initial" }) => $justify};
   align-items: ${({ $align = "flex-start" }) => $align};
   margin: ${({ $marginY = 0, $marginX = 0 }) => `${$marginY}px ${$marginX}px`};
+  margin-bottom: ${({ $marginBottom = 0 }) => `${$marginBottom}rem`};
   gap: ${({ $gap = 1 }) => `${$gap}rem`};
 `;

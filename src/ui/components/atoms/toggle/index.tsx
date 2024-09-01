@@ -8,9 +8,9 @@ export function Toggle({
   checked = false,
   disabled = false,
   onChange,
-  colorCircle = 'background10',
-  colorChecked = 'primary10',
-  colorUnchecked = 'background20',
+  $colorCircle = 'background10',
+  $colorChecked = 'primary10',
+  $colorUnchecked = 'background20',
   dataTestId,
 }: Readonly<ToggleProps>) {
   const [isChecked, setIsChecked] = useState<boolean>(checked)
@@ -24,9 +24,9 @@ export function Toggle({
       htmlFor={id}
       checked={isChecked}
       disabled={disabled}
-      colorCircle={colorCircle}
-      colorChecked={colorChecked}
-      colorUnchecked={colorUnchecked}
+      $colorCircle={$colorCircle}
+      $colorChecked={$colorChecked}
+      $colorUnchecked={$colorUnchecked}
     >
       <S.Input
         type="checkbox"

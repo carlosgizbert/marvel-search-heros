@@ -29,13 +29,13 @@ export const Label = styled('label')<LabelProps>`
     top: 0;
     left: 0;
     border-radius: ${({ theme }) => theme.rounded.large};
-    background-color: ${({ theme, colorUnchecked }) => getColorValue(theme, colorUnchecked)};
+    background-color: ${({ theme, $colorUnchecked }) => getColorValue(theme, $colorUnchecked)};
     transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
 
-    ${(p) =>
-      p.checked &&
+    ${({ theme, checked, $colorChecked }) =>
+      checked &&
       css`
-        background-color: ${getColorValue(p.theme, p.colorChecked)};
+        background-color: ${getColorValue(theme, $colorChecked)};
         transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
       `}
   }
@@ -50,7 +50,7 @@ export const Label = styled('label')<LabelProps>`
     left: 4px;
     transform: translateY(-50%);
     border-radius: ${({ theme }) => theme.rounded.large};
-    background-color: ${(p) => getColorValue(p.theme, p.colorCircle)};
+    background-color: ${({ theme, $colorCircle }) => getColorValue(theme, $colorCircle)};
     transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
 
     ${(p) =>

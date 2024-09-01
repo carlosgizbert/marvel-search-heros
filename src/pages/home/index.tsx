@@ -4,11 +4,19 @@ import { useGetCharacters } from "@/services/characters";
 import { Character, OrderBy } from "@/services/characters/dto";
 import { CharactersList } from "@/ui/components/molecules/characters-list";
 import { Toggle } from "@/ui/components/atoms/toggle";
+import { SearchField } from "@/ui/components/molecules/search-field";
+import {
+  HearthFilledIcon,
+  HearthIcon,
+  SearchIcon,
+} from "@/ui/components/atoms/icons";
+import { Typography } from "@/ui/components/atoms/typography";
 
 export function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [orderBy, setOrderBy] = useState<OrderBy>("name");
+  const [onlyLiked, setOnlyLiked] = useState<boolean>(false);
 
   const {
     data: response,
@@ -25,7 +33,7 @@ export function Home() {
   );
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    const enterWasPressed = event.key === "Enter"
+    const enterWasPressed = event.key === "Enter";
     if (enterWasPressed) {
       event.preventDefault();
       refetch();
@@ -37,7 +45,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    const hasResults = response?.data.results
+    const hasResults = response?.data.results;
     if (hasResults) {
       setCharacters(response.data.results);
     }
@@ -45,51 +53,64 @@ export function Home() {
 
   const isLoadingOrRefetching = isLoading || isRefetching;
   const orderIsDisabled = searchTerm.length === 0;
+  const hasMoreThanOneCharacter = characters.length > 1;
 
   return (
-    <Box $gap={2}>
+    <Box>
       <Box $gap={1} $align="center">
         <div>
           <span>Logo</span>
           <span>Search heroes</span>
         </div>
         <Box $marginY={0} $gap={0.5} $align="center">
-          <h1>Explore o universo</h1>
+          <Typography size={24} $weight={700}>EXPLORE O UNIVERSO</Typography>
           <span className="subtitle">
             Mergulhe no domínio deslumbrante de todos os personagens clássicos
             que você ama - e aqueles que você descobrirá em breve!
           </span>
         </Box>
-        <input
-          placeholder="Procurar heróis"
+        <SearchField
+          placeholder="Procure por heróis"
           value={searchTerm}
           onChange={({ target: { value } }) => setSearchTerm(value)}
           onKeyDown={handleKeyDown}
+          startElement={<SearchIcon color="#ED1D24" />}
         />
       </Box>
-      <Box $gap={2}>
-        <Box $gap={1} $direction="row" $justify="space-between" $align="center">
-          <div>Encontrados {characters.length} heróis</div>
-          <div>
-            <Box $direction="row" $align="center" $gap={1}>
-              <span>Ordenar por nome - A/Z</span>
+      <Box>
+        <Box $gap={1} $direction="row" $align="center">
+          <Box>
+            <Typography weight="600" color="text20">
+              {characters.length} herói{hasMoreThanOneCharacter ? "s" : ""}{" "}
+              encontrado{hasMoreThanOneCharacter ? "s" : ""}
+            </Typography>
+          </Box>
+          <Box $direction="row">
+            <Box $direction="row" $align="center" $gap={0.5}>
+              <Typography color="primary10">Ordenar por nome - A/Z</Typography>
               <Toggle
                 id="orderBy"
-                checked={false}
+                checked={!orderIsDisabled}
                 disabled={orderIsDisabled}
                 onChange={() => handleOrderBy()}
               />
-              <span>Somente favoritos</span>
             </Box>
-          </div>
+            <Box $direction="row" $align="center" $justify="flex-end" $gap={0.5}>
+              {onlyLiked && <HearthFilledIcon color="#ED1D24" />}
+              {!onlyLiked && <HearthIcon color="#ED1D24" />}
+              <Typography color="primary10">Somente favoritos</Typography>
+            </Box>
+          </Box>
         </Box>
-        {isLoadingOrRefetching && <div>Carregando ...</div>}
-        {!isLoadingOrRefetching && characters.length === 0 && (
-          <div>Nenhum herói encontrado</div>
-        )}
-        {!isLoadingOrRefetching && characters.length > 0 && (
-          <CharactersList data={characters} />
-        )}
+        <Box>
+          {isLoadingOrRefetching && <div>Carregando ...</div>}
+          {!isLoadingOrRefetching && characters.length === 0 && (
+            <div>Nenhum herói encontrado</div>
+          )}
+          {!isLoadingOrRefetching && characters.length > 0 && (
+            <CharactersList data={characters} />
+          )}
+        </Box>
       </Box>
     </Box>
   );

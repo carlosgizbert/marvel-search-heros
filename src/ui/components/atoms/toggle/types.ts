@@ -5,16 +5,16 @@ export interface ToggleProps {
   checked?: boolean
   disabled?: boolean
   onChange?: (status: boolean) => void
-  colorCircle?: keyof Colors
-  colorChecked?: keyof Colors
-  colorUnchecked?: keyof Colors
+  $colorCircle?: keyof Colors
+  $colorChecked?: keyof Colors
+  $colorUnchecked?: keyof Colors
   dataTestId?: string
 }
 
 export interface LabelProps {
   checked: boolean
   disabled: boolean
-  colorCircle: keyof Colors
-  colorChecked: keyof Colors
-  colorUnchecked: keyof Colors
+  $colorCircle: keyof Colors
+  $colorChecked: keyof Colors
+  $colorUnchecked: keyof Colors
 }

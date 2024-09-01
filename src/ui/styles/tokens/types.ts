@@ -2,9 +2,11 @@ export type Colors = {
   background10: string;
   background20: string;
   primary10: string;
+  primary20: string;
   text10: string;
   text20: string;
   dark10: string;
+  gray10: string;
   white: string;
 };
 
@@ -47,6 +49,7 @@ export type Rounded = {
   small: string;
   medium: string;
   large: string;
+  full: string;
 };
 
 export type ShadowLevel = {
@@ -63,7 +66,6 @@ export type FontSize = {
     small: string;
     normal: string;
     medium: string;
-    xmedium: string;
     large: string;
   };
   title: TitleSize;

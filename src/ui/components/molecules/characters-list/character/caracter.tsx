@@ -8,7 +8,7 @@ interface CharacterProps {
   data: CharacterDTO;
 }
 
-export default function Character({ data }: Readonly<CharacterProps>) {
+export function Character({ data }: Readonly<CharacterProps>) {
   const { name, thumbnail } = data;
 
   return (
@@ -20,7 +20,7 @@ export default function Character({ data }: Readonly<CharacterProps>) {
         />
       </S.Character>
       <Box $direction="row" $justify="space-between">
-        <Typography weight="700">{name}</Typography>
+        <Typography $weight={600}>{name}</Typography>
         <div>Like</div>
       </Box>
     </S.CharacterWrapper>

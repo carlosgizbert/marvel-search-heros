@@ -9,6 +9,7 @@ const colors: T.Colors = {
   text20: "#808080",
   dark10: "#191919",
   gray10: "#E4E5E9",
+  gray20: "#C8C9CD",
   white: "#FFF",
 };
 

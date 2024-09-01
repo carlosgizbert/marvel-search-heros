@@ -11,7 +11,7 @@ import {
   SearchIcon,
 } from "@/ui/components/atoms/icons";
 import { Typography } from "@/ui/components/atoms/typography";
-import logo from '@/assets/logo.svg'
+import logo from "@/assets/logo.svg";
 
 export function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -52,18 +52,19 @@ export function Home() {
     }
   }, [response]);
 
-  const isLoadingOrRefetching = isLoading || isRefetching;
-  const orderIsDisabled = searchTerm.length === 0;
   const hasMoreThanOneCharacter = characters.length > 1;
+  const disableToggleButton = searchTerm.length === 0;
 
   return (
-    <Box $justify="center" $align="center" $gap={2}>
+    <Box $justify="center" $align="center" $gap={2} $marginBottom={5}>
       <Box $justify="center" $align="center" $gap={1.5}>
         <Box $direction="row" $align="baseline" $justify="center">
           <img src={logo} alt="Marvel Logo" />
         </Box>
         <Box $align="center" $gap={0.5}>
-          <Typography size={24} $weight={700}>EXPLORE O UNIVERSO</Typography>
+          <Typography size={24} $weight={700}>
+            EXPLORE O UNIVERSO
+          </Typography>
           <Typography color="text20">
             Mergulhe no domínio deslumbrante de todos os personagens clássicos
             que você ama - e aqueles que você descobrirá em breve!
@@ -92,12 +93,17 @@ export function Home() {
               <Typography color="primary10">Ordenar por nome - A/Z</Typography>
               <Toggle
                 id="orderBy"
-                checked={!orderIsDisabled}
-                disabled={orderIsDisabled}
+                checked={!disableToggleButton}
+                disabled={disableToggleButton}
                 onChange={() => handleOrderBy()}
               />
             </Box>
-            <Box $direction="row" $align="center" $justify="flex-end" $gap={0.5}>
+            <Box
+              $direction="row"
+              $align="center"
+              $justify="flex-end"
+              $gap={0.5}
+            >
               {onlyLiked && <HearthFilledIcon color="#ED1D24" />}
               {!onlyLiked && <HearthIcon color="#ED1D24" />}
               <Typography color="primary10">Somente favoritos</Typography>
@@ -105,13 +111,10 @@ export function Home() {
           </Box>
         </Box>
         <Box>
-          {isLoadingOrRefetching && <div>Carregando ...</div>}
-          {!isLoadingOrRefetching && characters.length === 0 && (
-            <div>Nenhum herói encontrado</div>
-          )}
-          {!isLoadingOrRefetching && characters.length > 0 && (
-            <CharactersList data={characters} />
-          )}
+          <CharactersList
+            data={characters}
+            isLoading={isLoading || isRefetching}
+          />
         </Box>
       </Box>
     </Box>

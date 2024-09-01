@@ -7,6 +7,7 @@ export type Colors = {
   text20: string;
   dark10: string;
   gray10: string;
+  gray20: string;
   white: string;
 };
 

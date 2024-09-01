@@ -22,5 +22,5 @@ export const Box = styled.div<{
   justify-content: ${({ $justify = "initial" }) => $justify};
   align-items: ${({ $align = "flex-start" }) => $align};
   margin: ${({ $marginY = 0, $marginX = 0 }) => `${$marginY}px ${$marginX}px`};
-  gap: ${({ $gap = 0 }) => `${$gap}rem`};
+  gap: ${({ $gap = 1 }) => `${$gap}rem`};
 `;

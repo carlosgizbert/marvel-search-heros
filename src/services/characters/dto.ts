@@ -1,5 +1,8 @@
+export type OrderBy = 'name' | '-name' | 'modified' | '-modified' | undefined
+
 export interface GetCharactersQueryParams {
-  name?: string
+  nameStartsWith?: string
+  orderBy?: OrderBy
 }
 
 export interface GetCaractersResponse {

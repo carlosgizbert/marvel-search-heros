@@ -7,7 +7,7 @@ export function useGetCharacters(
   queryParams?: GetCharactersQueryParams
 ): UseQueryResult<GetCaractersResponse, Error> {
   return useQuery({
-    enabled: !!queryParams || queryParams === undefined,
+    enabled: !!queryParams,
     queryKey: [CACHE_QUERY_KEYS.useGetCharacters, queryParams],
     queryFn: () => getCharacters(queryParams),
     ...QUERIES_CONFIG,

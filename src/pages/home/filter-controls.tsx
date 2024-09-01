@@ -5,8 +5,6 @@ import { Toggle } from "@/ui/components/atoms/toggle";
 import { Typography } from "@/ui/components/atoms/typography";
 import { ReactNode } from "react";
 
-import * as S from "./styles";
-
 interface FilterControlsProps {
   orderBy: OrderBy;
   toggleOrderBy: () => void;

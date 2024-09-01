@@ -1,6 +1,6 @@
 import { Character } from "@/pages/character";
 import { Home } from "@/pages/home";
-import Layout from "@/ui/components/atoms/Layout";
+import { Layout } from "@/ui/components/atoms/layout";
 import {
   RouterProvider,
   createBrowserRouter,

@@ -8,10 +8,10 @@ export function Header() {
       <Box $direction="row" $align="baseline" $justify="center">
         <img src={logo} alt="Marvel Logo" />
       </Box>
-      <Box $align="center" $gap={1}>
+      <Box $align="center" $gap={1} $maxWidth="620px">
         <Typography $size={26} $weight={700}>EXPLORE O UNIVERSO</Typography>
         <Typography color="text20" $align="center">
-          Mergulhe no domínio deslumbrante de todos os personagens clássicos que você ama - e aqueles que você descobrirá em breve!
+          Mergulhe no domínio deslumbrante de todos os personagens clássicos que você ama, e aqueles que você descobrirá em breve!
         </Typography>
       </Box>
     </Box>

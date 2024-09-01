@@ -53,7 +53,7 @@ export function Home() {
       $maxWidth="998px"
     >
       <Header />
-      <Box $marginY={1} $maxWidth="720px">
+      <Box $maxWidth="720px">
         <SearchField
           placeholder="Procurar heróis ..."
           value={searchTerm}
@@ -63,7 +63,7 @@ export function Home() {
           startElement={<SearchIcon color="#ED1D24" />}
         />
       </Box>
-      <Box $marginY={1}>
+      <Box>
         <FilterControls
           orderBy={orderBy}
           toggleOrderBy={toggleOrderBy}

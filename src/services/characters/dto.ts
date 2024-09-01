@@ -3,6 +3,7 @@ export type OrderBy = "name" | "-name" | "modified" | "-modified" | undefined;
 export interface GetCharactersQueryParams {
   nameStartsWith?: string;
   orderBy?: OrderBy;
+  limit?: number
 }
 
 export interface GetCaractersResponse {

@@ -9,6 +9,8 @@ import { CharactersCounter } from "./characters-counter";
 import { FilterControls } from "./filter-controls";
 import { Header } from "./header";
 
+const ITEMS_LIMIT: number = 20
+
 export function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -26,7 +28,10 @@ export function Home() {
     isLoading,
     isRefetching,
     refetch,
-  } = useGetCharacters(hasTermToSearch ? userQueryParams : undefined);
+  } = useGetCharacters({
+    limit: ITEMS_LIMIT,
+    ...(hasTermToSearch ? userQueryParams : undefined)
+  });
 
   const handleSearch = () => refetch();
   const toggleOrderBy = () => setOrderBy(orderBy === "name" ? "-name" : "name");

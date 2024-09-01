@@ -18,7 +18,21 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Relative Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@/public/*": ["public/*"],
+      "@/config/*": ["src/config/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/tasteless/*": ["src/tasteless/*"],
+      "@/hooks/*": ["src/tasteless/hooks/*"],
+      "@/contexts/*": ["src/tasteless/contexts/*"],
+      "@/services/*": ["src/services/*"],
+      "@/ui/*": ["src/ui/*"],
+      "@/routes/*": ["src/routes/*"]
+    },
   },
   "include": ["src"]
 }

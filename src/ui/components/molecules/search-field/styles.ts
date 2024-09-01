@@ -23,12 +23,13 @@ export const Wrapper = styled.div<{
       getColorValue(theme, $placeholderColor)};
   }
 
-  outline: 2px solid transparent;
+  outline: 2px solid ${({ theme }) => theme.colors.primary20};
   transition: all ease 0.2s;
 
   &:hover {
     outline: 2px solid ${({ theme }) => theme.colors.primary10};
-  }
+    background-color: ${({ theme }) => theme.colors.primary20};
+}
 `;
 
 export const Input = styled.input<{

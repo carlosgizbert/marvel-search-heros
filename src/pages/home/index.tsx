@@ -59,6 +59,7 @@ export function Home() {
           value={searchTerm}
           onChange={({ target: { value } }) => setSearchTerm(value)}
           $onPressEnter={handleSearch}
+          $backgroundColor="primary20"
           startElement={<SearchIcon color="#ED1D24" />}
         />
       </Box>

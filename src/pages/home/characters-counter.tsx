@@ -16,7 +16,7 @@ export function CharactersCounter({ count, isLoading }: Readonly<CharactersCount
         <Skeleton height={24} width={200} />
       ) : (
         <Typography $weight={600} color="text20">
-          {count} herói{hasMoreThanOneCharacter ? "s" : ""} encontrado{hasMoreThanOneCharacter ? "s" : ""}
+          {count} herói{hasMoreThanOneCharacter ? "s" : ""} listado{hasMoreThanOneCharacter ? "s" : ""}
         </Typography>
       )}
     </Box>

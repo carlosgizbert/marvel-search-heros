@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import { Character as CharacterDTO } from "@/services/characters/dto";
 import { Box } from "@/ui/components/atoms/box";
 import { Typography } from "@/ui/components/atoms/typography";
-import { Character } from "./comic/comic";
 import { CharacterSkeleton } from "./character-skeleton/caracter";
+import { Comic as ComicDTO } from "@/services/characters/dto/comics";
+import { Comic } from "./comic/comic";
 
 import { Paths } from "@/routes/paths";
 
 import * as S from "./styles";
 
 interface ComicsSkeletonsProps {
-  data: CharacterDTO[];
+  data: ComicDTO[];
   isLoading: boolean;
 }
 
@@ -48,7 +48,7 @@ export function ComicsList({
                 to={`${Paths.CHARACTER_DETAILS}/${character.id}`}
                 style={{ textDecoration: "none" }}
               >
-                <Character data={character} />
+                <Comic data={character} />
               </Link>
             );
           })}

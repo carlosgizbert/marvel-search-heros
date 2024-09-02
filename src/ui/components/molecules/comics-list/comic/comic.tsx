@@ -1,18 +1,15 @@
 import { Box } from "@/ui/components/atoms/box";
-import { Character as CharacterDTO } from "@/services/characters/dto";
-import { HearthFilledIcon, HearthIcon } from "@/ui/components/atoms/icons";
 import { Typography } from "@/ui/components/atoms/typography";
+import { Comic as ComicDTO } from "@/services/characters/dto/comics";
 
 import * as S from "./styles";
 
 interface ComicProps {
-  data: Comic;
+  data: ComicDTO;
 }
 
 export function Comic({ data }: Readonly<ComicProps>) {
-  const { name, thumbnail } = data;
-
-  const liked = false
+  const { title, thumbnail } = data;
 
   return (
     <S.ComicWrapper>
@@ -23,8 +20,7 @@ export function Comic({ data }: Readonly<ComicProps>) {
         />
       </S.Comic>
       <Box $direction="row" $justify="space-between" $align="center">
-        <Typography $weight={600}>{name}</Typography>
-        {liked ? <HearthFilledIcon color="#ED1D24" /> : <HearthIcon color="#ED1D24" />}
+        <Typography $weight={600} $size={14}>{title}</Typography>
       </Box>
     </S.ComicWrapper>
   );

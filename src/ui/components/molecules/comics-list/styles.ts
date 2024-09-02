@@ -6,10 +6,10 @@ export const List = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
 
   @media screen and (max-width: 720px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 `

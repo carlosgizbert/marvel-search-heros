@@ -6,11 +6,12 @@ import {
   createBrowserRouter,
 
 } from "react-router-dom";
+import { Paths } from "./paths";
 
 const router = createBrowserRouter([
   {
     id: "root",
-    path: "/",
+    path: Paths.HOME,
     Component: Layout,
     children: [
       {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "personagem",
+        path: `${Paths.CHARACTER_DETAILS}/:id`,
         Component: Character,
       },
     ],

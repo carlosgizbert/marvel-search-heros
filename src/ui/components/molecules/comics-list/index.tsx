@@ -1,19 +1,20 @@
+import { Link } from "react-router-dom";
 import { Character as CharacterDTO } from "@/services/characters/dto";
 import { Box } from "@/ui/components/atoms/box";
 import { Typography } from "@/ui/components/atoms/typography";
-import { Character } from "./character/caracter";
+import { Character } from "./comic/comic";
 import { CharacterSkeleton } from "./character-skeleton/caracter";
 
-import * as S from "./styles";
-import { Link } from "react-router-dom";
 import { Paths } from "@/routes/paths";
 
-interface CharactersListProps {
+import * as S from "./styles";
+
+interface ComicsSkeletonsProps {
   data: CharacterDTO[];
   isLoading: boolean;
 }
 
-function CharactersSkeletons() {
+function ComicsSkeletons() {
   return (
     <>
       <CharacterSkeleton />
@@ -26,10 +27,10 @@ function CharactersSkeletons() {
   );
 }
 
-export function CharactersList({
+export function ComicsList({
   data,
   isLoading,
-}: Readonly<CharactersListProps>) {
+}: Readonly<ComicsSkeletonsProps>) {
   const showList = !isLoading && data;
   const showSkeletons = isLoading;
   const hasMoreThanOne = !isLoading && data.length > 1;
@@ -38,7 +39,7 @@ export function CharactersList({
   return (
     <Box $gap={3} $justify="center" $align="center">
       <S.List>
-        {showSkeletons && <CharactersSkeletons />}
+        {showSkeletons && <ComicsSkeletons />}
         {showList &&
           data.map((character) => {
             return (
@@ -53,7 +54,7 @@ export function CharactersList({
           })}
       </S.List>
       {hasMoreThanOne && <Typography>Final da lista</Typography>}
-      {showNotFound && <div>Nenhum herói encontrado</div>}
+      {showNotFound && <div>Nenhum lançamento</div>}
     </Box>
   );
 }

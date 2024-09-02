@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Box = styled.div<{
   $marginY?: number;
   $marginX?: number;
+  $paddingY?: number;
+  $paddingX?: number;
   $gap?: number;
   $marginBottom?: number;
   $maxWidth?: string;
@@ -25,6 +27,7 @@ export const Box = styled.div<{
   justify-content: ${({ $justify = "initial" }) => $justify};
   align-items: ${({ $align = "flex-start" }) => $align};
   margin: ${({ $marginY = 0, $marginX = 0 }) => `${$marginY}rem ${$marginX}rem`};
+  padding: ${({ $paddingY = 0, $paddingX = 0 }) => `${$paddingY}rem ${$paddingX}rem`};
   margin-bottom: ${({ $marginBottom = 0 }) => `${$marginBottom}rem`};
   gap: ${({ $gap = 1 }) => `${$gap}rem`};
 `;

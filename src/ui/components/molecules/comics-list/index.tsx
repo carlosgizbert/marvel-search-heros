@@ -53,8 +53,8 @@ export function ComicsList({
             );
           })}
       </S.List>
-      {hasMoreThanOne && <Typography>Final da lista</Typography>}
-      {showNotFound && <div>Nenhum lançamento</div>}
+      {hasMoreThanOne && <Typography color="text20">Final da lista</Typography>}
+      {showNotFound && <Typography color="text20">Nenhum lançamento</Typography>}
     </Box>
   );
 }

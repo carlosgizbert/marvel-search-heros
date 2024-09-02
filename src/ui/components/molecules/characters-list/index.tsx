@@ -52,8 +52,8 @@ export function CharactersList({
             );
           })}
       </S.List>
-      {hasMoreThanOne && <Typography>Final da lista</Typography>}
-      {showNotFound && <div>Nenhum herói encontrado</div>}
+      {hasMoreThanOne && <Typography color="text20">Final da lista</Typography>}
+      {showNotFound && <Typography color="text20">Nenhum herói encontrado</Typography>}
     </Box>
   );
 }

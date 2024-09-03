@@ -5,6 +5,8 @@ import { Toggle } from "@/ui/components/atoms/toggle";
 import { Typography } from "@/ui/components/atoms/typography";
 import { ReactNode } from "react";
 
+import * as S from './styles'
+
 interface FilterControlsProps {
   orderBy: OrderBy;
   toggleOrderBy: () => void;
@@ -20,9 +22,9 @@ export function FilterControls({
   disableToggleButton,
 }: Readonly<FilterControlsProps>) {
   return (
-    <Box $direction="row" $align="center">
+    <S.Wrapper>
       {counterElement}
-      <Box $direction="row" $align="center" $justify="flex-end" $gap={2}>
+      <S.EndContent>
         <div>
         <Box $direction="row" $align="center" $gap={0.5}>
         <Typography color={disableToggleButton ? "gray20" : "primary10"}>
@@ -46,7 +48,7 @@ export function FilterControls({
             <Typography color="primary10">Somente favoritos</Typography>
           </Box>
         </div>
-      </Box>
-    </Box>
+      </S.EndContent>
+    </S.Wrapper>
   );
 }

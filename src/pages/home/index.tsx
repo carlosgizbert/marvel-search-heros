@@ -40,7 +40,7 @@ export function Home() {
 
   const handleSearch = () => {
     setSearchTerm(fieldValue);
-    refetch()
+    refetch();
     setSearchParams({
       buscar: fieldValue,
     });
@@ -68,7 +68,7 @@ export function Home() {
     <Box
       $justify="center"
       $align="center"
-      $gap={2}
+      $gap={1.75}
       $marginBottom={5}
       $maxWidth="998px"
     >

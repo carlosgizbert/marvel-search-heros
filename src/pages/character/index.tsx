@@ -10,8 +10,10 @@ import { ComicsList } from "@/ui/components/molecules/comics-list";
 import { Skeleton } from "@/ui/components/atoms/skeleton";
 
 import { HeroSkeletons } from "./hero-skeletons";
+import { HearthFilledIcon } from "@/ui/components/atoms/icons";
 
 import * as S from "./styles";
+import { formatDate } from "@/ui/utils";
 
 export function Character() {
   const [character, setCharacter] = useState<CharacterDTO>();
@@ -32,6 +34,9 @@ export function Character() {
   });
 
   const hasComics = comics.length > 1;
+  const comicsQuantity = comics.length;
+  const moviesQuantity = character?.series.items.length;
+  const lastComicReleaseDate = formatDate(comics[0]?.dates[0].date);
 
   useEffect(() => {
     if (characterData) {
@@ -45,7 +50,7 @@ export function Character() {
       const responseData = comicsData?.data.results;
       setComics(responseData);
     }
-  }, [comicsData]);
+  }, [comics, comicsData]);
 
   return (
     <Box
@@ -65,7 +70,7 @@ export function Character() {
                 <Typography $size={24} $weight={700}>
                   {character?.name}
                 </Typography>
-                <div>coração</div>
+                <HearthFilledIcon color="#ED1D24" />
               </Box>
             </div>
             <Typography $lineHeight={1.75} color="text20">
@@ -74,19 +79,25 @@ export function Character() {
             <Box $direction="row">
               <Box>
                 <Typography color="text20">Quadrinhos</Typography>
-                <Typography $weight={600}>3.000</Typography>
+                {comicsIsLoading && <Skeleton width={200} height={24} />}
+                {!comicsIsLoading && (
+                  <Typography $weight={600}>{comicsQuantity}</Typography>
+                )}
               </Box>
               <Box>
                 <Typography color="text20">Filmes</Typography>
-                <Typography $weight={600}>40</Typography>
+                <Typography $weight={600}>{moviesQuantity}</Typography>
               </Box>
             </Box>
             <Box $direction="row" $align="center">
               <Typography color="text20">Rating:</Typography> X X X X X
             </Box>
             <Box $direction="row" $align="center">
-              <Typography color="text20">Último quadrinho:</Typography> 13 fev
-              2000
+              <Typography color="text20">Último quadrinho:</Typography>
+              {comicsIsLoading && <Skeleton width={180} height={24} />}
+              {!comicsIsLoading && !!comics[0] && (
+                <Typography $weight={600}>{lastComicReleaseDate}</Typography>
+              )}
             </Box>
           </S.HeroStartContentContainer>
           <S.Image

@@ -14,3 +14,14 @@ export const hexToRgba = (hex: string, opacity = 1) => {
 
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
+
+export function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  const formatter = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
+  const formattedDate = formatter.format(date).replace('.', '');
+  return formattedDate;
+}

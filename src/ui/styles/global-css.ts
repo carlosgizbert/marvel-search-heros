@@ -32,14 +32,6 @@ const GlobalCSS = createGlobalStyle`
     text-overflow: ellipsis;
   }
 
-  .two-line-text {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; 
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   body {
     margin: 0;
     font-family: 'Inter', sans-serif;

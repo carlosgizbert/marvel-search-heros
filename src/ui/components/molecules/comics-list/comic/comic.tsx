@@ -20,7 +20,7 @@ export function Comic({ data }: Readonly<ComicProps>) {
         />
       </S.Comic>
       <Box $direction="row" $justify="space-between" $align="center">
-        <Typography $weight={600} $size={14} className="two-line-text">
+        <Typography $weight={600} $size={14} className="one-line-text">
           {title}
         </Typography>
       </Box>

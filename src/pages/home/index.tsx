@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Box } from "@/ui/components/atoms/box";
@@ -23,10 +23,10 @@ export function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const hasTermToSearch = searchTerm.length > 0;
-  const userQueryParams = {
+  const userQueryParams = useMemo(() => ({
     nameStartsWith: searchTerm.toLowerCase(),
     ...(hasTermToSearch && { orderBy }),
-  };
+  }), [searchTerm, orderBy, hasTermToSearch])
 
   const {
     data: response,
@@ -38,13 +38,13 @@ export function Home() {
     ...(hasTermToSearch ? userQueryParams : undefined),
   });
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     setSearchTerm(fieldValue);
     refetch();
     setSearchParams({
       buscar: fieldValue,
     });
-  };
+  }, [fieldValue, refetch, setSearchParams]);
 
   const toggleOrderBy = () => setOrderBy(orderBy === "name" ? "-name" : "name");
   const isFetchingData = isLoading || isRefetching;

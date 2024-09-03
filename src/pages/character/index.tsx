@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { useGetCharacter, useGetComics } from "@/services/characters/hooks";
@@ -35,12 +35,12 @@ export function Character() {
     limit: 10,
   });
 
-  const hasComics = comics.length > 1;
-  const comicsQuantity = comics.length;
-  const moviesQuantity = character?.series.items.length;
-  const description = character?.description
-    ? character.description
-    : "Personagem sem descrição";
+  const hasComics = useMemo(() => comics.length > 1, [comics]);
+  const comicsQuantity = useMemo(() => comics.length, [comics]);
+  const moviesQuantity = useMemo(() => character?.series.items.length, [character]);
+  const description = useMemo(() => {
+    return character?.description ? character.description : "Personagem sem descrição";
+  }, [character]);
 
   useEffect(() => {
     if (characterData) {

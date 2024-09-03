@@ -1,5 +1,5 @@
 import { Box } from "@/ui/components/atoms/box";
-import { Character as CharacterDTO } from "@/services/characters/dto";
+import { Character as CharacterDTO } from "@/services/characters/dto/characters";
 import { HearthFilledIcon, HearthIcon } from "@/ui/components/atoms/icons";
 import { Typography } from "@/ui/components/atoms/typography";
 

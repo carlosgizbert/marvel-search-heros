@@ -1,5 +1,7 @@
-export const CACHE_QUERY_KEYS: Readonly<any> = {
-  useGetCharacters: 'getCharacters',
+export enum CACHE_QUERY_KEYS {
+  useGetCharacters = 'getCharacters',
+  useGetCharacter = 'getCharacter',
+  useGetComics = 'getComics'
 };
 
 export const CACHE_QUERY_CONFIG = {

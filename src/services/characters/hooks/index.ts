@@ -27,7 +27,7 @@ export function useGetCharacter({
 }: GetCharacterQueryParams): UseQueryResult<GetCaractersResponse, Error> {
   return useQuery({
     enabled: !!id,
-    queryKey: [CACHE_QUERY_KEYS.useGetCharacters, id],
+    queryKey: [CACHE_QUERY_KEYS.useGetCharacter, id],
     queryFn: () => getCharacter({ id }),
     ...CACHE_QUERY_CONFIG,
   });

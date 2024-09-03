@@ -1,6 +1,6 @@
+import { OrderBy } from "@/services/characters/dto/characters";
 import { Box } from "@/ui/components/atoms/box";
 import { HearthFilledIcon, HearthIcon } from "@/ui/components/atoms/icons";
-import { OrderBy } from "@/services/characters/dto";
 import { Toggle } from "@/ui/components/atoms/toggle";
 import { Typography } from "@/ui/components/atoms/typography";
 import { ReactNode } from "react";
@@ -14,7 +14,6 @@ interface FilterControlsProps {
 }
 
 export function FilterControls({
-  orderBy,
   toggleOrderBy,
   counterElement,
   onlyLiked,

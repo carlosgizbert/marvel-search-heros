@@ -16,9 +16,9 @@ const ITEMS_LIMIT: number = 20;
 
 export function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
+  const [fieldValue, setFieldValue] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [orderBy, setOrderBy] = useState<OrderBy>("name");
-  const [onlyLiked, setOnlyLiked] = useState<boolean>(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -38,11 +38,12 @@ export function Home() {
     ...(hasTermToSearch ? userQueryParams : undefined),
   });
 
-  const handleSearch = (value: string) => {
+  const handleSearch = () => {
+    setSearchTerm(fieldValue);
+    refetch()
     setSearchParams({
-      buscar: value,
+      buscar: fieldValue,
     });
-    setSearchTerm(value);
   };
 
   const toggleOrderBy = () => setOrderBy(orderBy === "name" ? "-name" : "name");
@@ -59,6 +60,7 @@ export function Home() {
     const searchParam = searchParams.get("buscar");
     if (searchParam) {
       setSearchTerm(searchParam);
+      setFieldValue(searchParam);
     }
   }, [searchParams]);
 
@@ -74,9 +76,9 @@ export function Home() {
       <Box $maxWidth="720px">
         <SearchField
           placeholder="Procurar heróis ..."
-          value={searchTerm}
-          onChange={({ target: { value } }) => handleSearch(value)}
-          $onPressEnter={() => refetch()}
+          value={fieldValue}
+          onChange={({ target: { value } }) => setFieldValue(value)}
+          $onPressEnter={() => handleSearch()}
           $backgroundColor="primary20"
           startElement={<SearchIcon color="#ED1D24" />}
         />
@@ -85,7 +87,7 @@ export function Home() {
         <FilterControls
           orderBy={orderBy}
           toggleOrderBy={toggleOrderBy}
-          onlyLiked={onlyLiked}
+          onlyLiked={false}
           disableToggleButton={searchTerm.length === 0}
           counterElement={
             <CharactersCounter

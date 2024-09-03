@@ -38,6 +38,9 @@ export function Character() {
   const hasComics = comics.length > 1;
   const comicsQuantity = comics.length;
   const moviesQuantity = character?.series.items.length;
+  const description = character?.description
+    ? character.description
+    : "Personagem sem descrição";
 
   useEffect(() => {
     if (characterData) {
@@ -88,7 +91,7 @@ export function Character() {
               </Box>
             </div>
             <Typography $lineHeight={1.75} color="text20">
-              {character?.description}
+              {description}
             </Typography>
             <Box $direction="row">
               <Box $borderColor="gray10" $paddingX={0.5} $paddingY={0.5}>

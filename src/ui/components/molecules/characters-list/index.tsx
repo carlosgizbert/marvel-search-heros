@@ -1,13 +1,13 @@
-import { Character as CharacterDTO } from "@/services/characters/dto";
+import { Link } from "react-router-dom";
+
+import { Character as CharacterDTO } from "@/services/characters/dto/characters";
 import { Box } from "@/ui/components/atoms/box";
 import { Typography } from "@/ui/components/atoms/typography";
 import { Character } from "./character/caracter";
 import { CharacterSkeleton } from "./character-skeleton/caracter";
+import { Paths } from "@/routes/paths";
 
 import * as S from "./styles";
-import { Link } from "react-router-dom";
-import { Paths } from "@/routes/paths";
-import { Footer } from "../footer";
 
 interface CharactersListProps {
   data: CharacterDTO[];

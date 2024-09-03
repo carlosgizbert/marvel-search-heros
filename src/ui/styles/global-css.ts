@@ -24,6 +24,14 @@ const GlobalCSS = createGlobalStyle`
     font-size: 1.5rem;
   }
 
+  .one-line-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .two-line-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;

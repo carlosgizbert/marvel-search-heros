@@ -23,7 +23,7 @@ export function Character({ data }: Readonly<CharacterProps>) {
         />
       </S.Character>
       <Box $direction="row" $justify="space-between" $align="center">
-        <Typography $weight={600}>{name}</Typography>
+        <Typography $weight={600} className="one-line-text">{name}</Typography>
         {liked ? <HearthFilledIcon color="#ED1D24" /> : <HearthIcon color="#ED1D24" />}
       </Box>
     </S.CharacterWrapper>

@@ -7,6 +7,7 @@ import { CharacterSkeleton } from "./character-skeleton/caracter";
 import * as S from "./styles";
 import { Link } from "react-router-dom";
 import { Paths } from "@/routes/paths";
+import { Footer } from "../footer";
 
 interface CharactersListProps {
   data: CharacterDTO[];

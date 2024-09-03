@@ -11,13 +11,14 @@ import { Skeleton } from "@/ui/components/atoms/skeleton";
 
 import { HeroSkeletons } from "./hero-skeletons";
 import { HearthFilledIcon } from "@/ui/components/atoms/icons";
+import { formatDate } from "@/ui/utils";
 
 import * as S from "./styles";
-import { formatDate } from "@/ui/utils";
 
 export function Character() {
   const [character, setCharacter] = useState<CharacterDTO>();
   const [comics, setComics] = useState<Comic[]>([]);
+  const [lastComicDate, setLastComicDate] = useState<string>("N/D")
   // const [searchTerm, setSearchTerm] = useState<string>("");
 
   const { id } = useParams();
@@ -36,7 +37,6 @@ export function Character() {
   const hasComics = comics.length > 1;
   const comicsQuantity = comics.length;
   const moviesQuantity = character?.series.items.length;
-  const lastComicReleaseDate = formatDate(comics[0]?.dates[0].date);
 
   useEffect(() => {
     if (characterData) {
@@ -49,6 +49,12 @@ export function Character() {
     if (comicsData) {
       const responseData = comicsData?.data.results;
       setComics(responseData);
+
+      const lastComicDate = comics[0]?.dates[0].date
+      console.log({lastComicDate})
+      if (lastComicDate !== undefined) {
+        setLastComicDate(formatDate(lastComicDate))
+      }
     }
   }, [comics, comicsData]);
 
@@ -95,8 +101,8 @@ export function Character() {
             <Box $direction="row" $align="center">
               <Typography color="text20">Último quadrinho:</Typography>
               {comicsIsLoading && <Skeleton width={180} height={24} />}
-              {!comicsIsLoading && !!comics[0] && (
-                <Typography $weight={600}>{lastComicReleaseDate}</Typography>
+              {!comicsIsLoading && (
+                <Typography $weight={600}>{lastComicDate}</Typography>
               )}
             </Box>
           </S.HeroStartContentContainer>

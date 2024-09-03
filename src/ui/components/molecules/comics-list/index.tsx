@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
 import { Box } from "@/ui/components/atoms/box";
 import { Typography } from "@/ui/components/atoms/typography";
 import { CharacterSkeleton } from "./character-skeleton/caracter";
 import { Comic as ComicDTO } from "@/services/characters/dto/comics";
 import { Comic } from "./comic/comic";
-
-import { Paths } from "@/routes/paths";
 
 import * as S from "./styles";
 
@@ -42,19 +39,13 @@ export function ComicsList({
         {showSkeletons && <ComicsSkeletons />}
         {showList &&
           data.map((character) => {
-            return (
-              <Link
-                key={character.id}
-                to={`${Paths.CHARACTER_DETAILS}/${character.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Comic data={character} />
-              </Link>
-            );
+            return <Comic key={character.id} data={character} />;
           })}
       </S.List>
       {hasMoreThanOne && <Typography color="text20">Final da lista</Typography>}
-      {showNotFound && <Typography color="text20">Nenhum lançamento</Typography>}
+      {showNotFound && (
+        <Typography color="text20">Nenhum lançamento</Typography>
+      )}
     </Box>
   );
 }

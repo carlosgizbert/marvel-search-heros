@@ -16,6 +16,17 @@ const generateMarvelAuthParams = () => {
   };
 };
 
+export const serializeQueryParams = (params: unknown) =>
+  `?${new URLSearchParams(
+    params as
+      | string
+      | string[][]
+      | Record<string, string>
+      | URLSearchParams
+      | undefined
+  ).toString()}`;
+
+
 export const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {

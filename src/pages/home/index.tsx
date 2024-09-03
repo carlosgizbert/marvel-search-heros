@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box } from "@/ui/components/atoms/box";
-import { Character, OrderBy } from "@/services/characters/dto";
+import { Character, OrderBy } from "@/services/characters/dto/characters";
 import { CharactersList } from "@/ui/components/molecules/characters-list";
 import { SearchField } from "@/ui/components/molecules/search-field";
 import { SearchIcon } from "@/ui/components/atoms/icons";
@@ -8,14 +8,17 @@ import { useGetCharacters } from "@/services/characters";
 import { CharactersCounter } from "./characters-counter";
 import { FilterControls } from "./filter-controls";
 import { Header } from "./header";
+import { useSearchParams } from "react-router-dom";
 
-const ITEMS_LIMIT: number = 20
+const ITEMS_LIMIT: number = 20;
 
 export function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [orderBy, setOrderBy] = useState<OrderBy>("name");
   const [onlyLiked, setOnlyLiked] = useState<boolean>(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const hasTermToSearch = searchTerm.length > 0;
   const userQueryParams = {
@@ -30,19 +33,32 @@ export function Home() {
     refetch,
   } = useGetCharacters({
     limit: ITEMS_LIMIT,
-    ...(hasTermToSearch ? userQueryParams : undefined)
+    ...(hasTermToSearch ? userQueryParams : undefined),
   });
 
-  const handleSearch = () => refetch();
+  const handleSearch = (value: string) => {
+    setSearchParams({
+      buscar: value,
+    });
+    setSearchTerm(value);
+  };
+
   const toggleOrderBy = () => setOrderBy(orderBy === "name" ? "-name" : "name");
   const isFetchingData = isLoading || isRefetching;
 
   useEffect(() => {
-    const hasResponseData = response?.data.results
+    const hasResponseData = response?.data.results;
     if (hasResponseData) {
       setCharacters(response.data.results);
     }
   }, [response]);
+
+  useEffect(() => {
+    const searchParam = searchParams.get("buscar");
+    if (searchParam) {
+      setSearchTerm(searchParam);
+    }
+  }, [searchParams]);
 
   return (
     <Box
@@ -57,8 +73,8 @@ export function Home() {
         <SearchField
           placeholder="Procurar heróis ..."
           value={searchTerm}
-          onChange={({ target: { value } }) => setSearchTerm(value)}
-          $onPressEnter={handleSearch}
+          onChange={({ target: { value } }) => handleSearch(value)}
+          $onPressEnter={() => refetch()}
           $backgroundColor="primary20"
           startElement={<SearchIcon color="#ED1D24" />}
         />

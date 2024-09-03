@@ -33,14 +33,13 @@ export function useGetCharacter({
   });
 }
 
-
-export function useGetComics({
-  characterId,
-}: GetComicsQueryParams): UseQueryResult<GetComicsResponse, Error> {
+export function useGetComics(
+  queryParams: GetComicsQueryParams
+): UseQueryResult<GetComicsResponse, Error> {
   return useQuery({
-    enabled: !!characterId,
-    queryKey: [CACHE_QUERY_KEYS.useGetComics, characterId],
-    queryFn: () => getComics({ characterId }),
+    enabled: !!queryParams.characterId,
+    queryKey: [CACHE_QUERY_KEYS.useGetComics, queryParams.characterId],
+    queryFn: () => getComics(queryParams),
     ...CACHE_QUERY_CONFIG,
   });
 }

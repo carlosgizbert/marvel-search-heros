@@ -2,9 +2,17 @@ import styled from 'styled-components'
 
 export const Hero = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 30% 1fr;
+  align-items: center;
   gap: 6rem;
   width: 100%;
+
+  @media screen and (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
 `
 
 export const HeroStartContentContainer = styled.div`
@@ -22,5 +30,5 @@ export const Image = styled.span<{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  border-radius: ${({ theme }) => `${theme.rounded.small} ${theme.rounded.small} 0 0`};
+  border-radius: ${({ theme }) => theme.rounded.small};
 `;

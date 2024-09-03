@@ -1,5 +1,9 @@
+export type OrderBy = "focDate" | "onsaleDate" | "title" | "issueNumber" | undefined;
+
 export interface GetComicsQueryParams {
   characterId: string | undefined;
+  orderBy?: OrderBy
+  limit?: number
 }
 
 export interface GetComicsResponse {

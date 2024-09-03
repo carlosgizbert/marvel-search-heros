@@ -7,6 +7,7 @@ import { Typography } from "@/ui/components/atoms/typography";
 import { Character as CharacterDTO } from "@/services/characters/dto/characters";
 import { Comic } from "@/services/characters/dto/comics";
 import { ComicsList } from "@/ui/components/molecules/comics-list";
+import { Skeleton } from "@/ui/components/atoms/skeleton";
 
 import * as S from "./styles";
 
@@ -24,7 +25,11 @@ export function Character() {
 
   const { data: comicsData, isLoading: comicsIsLoading } = useGetComics({
     characterId: id,
+    orderBy: "onsaleDate",
+    limit: 10
   });
+
+  const hasComics = comics.length > 1
 
   useEffect(() => {
     if (characterData) {
@@ -85,7 +90,12 @@ export function Character() {
         />
       </S.Hero>
       <Box>
-        <Typography $weight={600} $size={24}>Últimos lançamentos</Typography>
+        {comicsIsLoading && <Skeleton width={200} height={24} />}
+        {!comicsIsLoading && hasComics && (
+          <Typography $weight={600} $size={18}>
+            Últimos {comics.length} lançamentos
+          </Typography>
+        )}
         <ComicsList data={comics} isLoading={comicsIsLoading} />
       </Box>
     </Box>

@@ -11,7 +11,7 @@ export const Image = styled.span<{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  border-radius: ${({ theme }) => `${theme.rounded.small} ${theme.rounded.small} 0 0`};
+  border-radius: ${({ theme }) => theme.rounded.small};
 
   transition: box-shadow ease 0.4s;
 
@@ -33,5 +33,4 @@ export const Comic = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
-  border-bottom: 3px solid ${({ theme: { colors } }) => colors.primary10};
 `

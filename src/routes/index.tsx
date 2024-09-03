@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import { Paths } from "./paths";
 
+
+
 const router = createBrowserRouter([
   {
     id: "root",

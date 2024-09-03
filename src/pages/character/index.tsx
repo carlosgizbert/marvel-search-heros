@@ -59,6 +59,13 @@ export function Character() {
     }
   }, [comics, comicsData]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
   return (
     <Box
       $justify="center"

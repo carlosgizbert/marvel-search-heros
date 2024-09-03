@@ -5,10 +5,11 @@ import { SearchField } from "@/ui/components/molecules/search-field";
 import { SearchIcon } from "@/ui/components/atoms/icons";
 
 import { Paths } from "@/routes/paths";
-
 import logo_menor from "@/assets/logo_menor.svg";
 
-export function Header() {
+import * as S from './styles'
+
+export function Navbar() {
   const [searchTerm, setSearchTerm] = useState<string>()
   const navigate = useNavigate()
 
@@ -20,12 +21,12 @@ export function Header() {
   }
 
   return (
-    <Box
+    <S.Wrapper>
+      <Box
       $direction="row"
       $justify="center"
       $align="center"
-      $paddingX={1}
-      $paddingY={1}
+      $paddingY={0.5}
     >
       <Link to={Paths.HOME}>
         <img src={logo_menor} alt="Marvel Logo" />
@@ -39,5 +40,6 @@ export function Header() {
         startElement={<SearchIcon color="#ED1D24" />}
       />
     </Box>
+    </S.Wrapper>
   );
 }

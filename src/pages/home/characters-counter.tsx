@@ -11,9 +11,12 @@ export function CharactersCounter({ count, isLoading }: Readonly<CharactersCount
   const hasMoreThanOneCharacter = count > 1;
   
   const label = () => {
-    const prefix = hasMoreThanOneCharacter ? "heróis" : "herói"
-    const sufix = hasMoreThanOneCharacter ? "listados" : "listado"
-    return `${count} ${prefix} ${sufix}`
+    if (hasMoreThanOneCharacter) {
+      return `mostrando os ${count} primeiros personagens`
+    }
+    if (hasMoreThanOneCharacter) {
+      return `mostrando 1 personagem`
+    }
   }
 
   return (

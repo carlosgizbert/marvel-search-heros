@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Box } from "@/ui/components/atoms/box";
-import { Header } from "./header";
+import { Navbar } from "./navbar";
 import { useParams } from "react-router-dom";
-import { useGetCharacter, useGetComics } from "@/services/characters";
+import { useGetCharacter, useGetComics } from "@/services/characters/hooks";
 import { Typography } from "@/ui/components/atoms/typography";
 import { Character as CharacterDTO } from "@/services/characters/dto/characters";
 import { Comic } from "@/services/characters/dto/comics";
 import { ComicsList } from "@/ui/components/molecules/comics-list";
 import { Skeleton } from "@/ui/components/atoms/skeleton";
+
+import { HeroSkeletons } from "./hero-skeletons";
 
 import * as S from "./styles";
 
@@ -26,10 +28,10 @@ export function Character() {
   const { data: comicsData, isLoading: comicsIsLoading } = useGetComics({
     characterId: id,
     orderBy: "onsaleDate",
-    limit: 10
+    limit: 10,
   });
 
-  const hasComics = comics.length > 1
+  const hasComics = comics.length > 1;
 
   useEffect(() => {
     if (characterData) {
@@ -53,43 +55,46 @@ export function Character() {
       $marginBottom={5}
       $maxWidth="998px"
     >
-      <Header />
-      <S.Hero>
-        <S.HeroStartContentContainer>
-          <div>
-            <Box $direction="row" $align="center" $justify="space-between">
-              <Typography $size={24} $weight={700}>
-                {character?.name}
-              </Typography>
-              <div>coração</div>
+      <Navbar />
+      {characterIsLoading && <HeroSkeletons />}
+      {!characterIsLoading && (
+        <S.Hero>
+          <S.HeroStartContentContainer>
+            <div>
+              <Box $direction="row" $align="center" $justify="space-between">
+                <Typography $size={24} $weight={700}>
+                  {character?.name}
+                </Typography>
+                <div>coração</div>
+              </Box>
+            </div>
+            <Typography $lineHeight={1.75} color="text20">
+              {character?.description}
+            </Typography>
+            <Box $direction="row">
+              <Box>
+                <Typography color="text20">Quadrinhos</Typography>
+                <Typography $weight={600}>3.000</Typography>
+              </Box>
+              <Box>
+                <Typography color="text20">Filmes</Typography>
+                <Typography $weight={600}>40</Typography>
+              </Box>
             </Box>
-          </div>
-          <Typography $lineHeight={1.75} color="text20">
-            {character?.description}
-          </Typography>
-          <Box $direction="row">
-            <Box>
-              <Typography color="text20">Quadrinhos</Typography>
-              <Typography $weight={600}>3.000</Typography>
+            <Box $direction="row" $align="center">
+              <Typography color="text20">Rating:</Typography> X X X X X
             </Box>
-            <Box>
-              <Typography color="text20">Filmes</Typography>
-              <Typography $weight={600}>40</Typography>
+            <Box $direction="row" $align="center">
+              <Typography color="text20">Último quadrinho:</Typography> 13 fev
+              2000
             </Box>
-          </Box>
-          <Box $direction="row" $align="center">
-            <Typography color="text20">Rating:</Typography> X X X X X
-          </Box>
-          <Box $direction="row" $align="center">
-            <Typography color="text20">Último quadrinho:</Typography> 13 fev
-            2000
-          </Box>
-        </S.HeroStartContentContainer>
-        <S.Image
-          src={`${character?.thumbnail.path}.${character?.thumbnail.extension}`}
-        />
-      </S.Hero>
-      <Box>
+          </S.HeroStartContentContainer>
+          <S.Image
+            src={`${character?.thumbnail.path}.${character?.thumbnail.extension}`}
+          />
+        </S.Hero>
+      )}
+      <Box $marginY={1}>
         {comicsIsLoading && <Skeleton width={200} height={24} />}
         {!comicsIsLoading && hasComics && (
           <Typography $weight={600} $size={18}>

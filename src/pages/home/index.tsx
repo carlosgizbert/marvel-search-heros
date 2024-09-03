@@ -4,7 +4,7 @@ import { Character, OrderBy } from "@/services/characters/dto/characters";
 import { CharactersList } from "@/ui/components/molecules/characters-list";
 import { SearchField } from "@/ui/components/molecules/search-field";
 import { SearchIcon } from "@/ui/components/atoms/icons";
-import { useGetCharacters } from "@/services/characters";
+import { useGetCharacters } from "@/services/characters/hooks";
 import { CharactersCounter } from "./characters-counter";
 import { FilterControls } from "./filter-controls";
 import { Header } from "./header";

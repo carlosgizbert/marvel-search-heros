@@ -1,12 +1,12 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { getCharacter, getCharacters, getComics } from "./api";
+import { getCharacter, getCharacters, getComics } from "../api";
 import {
   GetCaractersResponse,
   GetCharacterQueryParams,
   GetCharactersQueryParams,
-} from "./dto/characters";
+} from "../dto/characters";
 import { CACHE_QUERY_CONFIG, CACHE_QUERY_KEYS } from "@/config/cache/config";
-import { GetComicsQueryParams, GetComicsResponse } from "./dto/comics";
+import { GetComicsQueryParams, GetComicsResponse } from "../dto/comics";
 
 export function useGetCharacters(
   queryParams?: GetCharactersQueryParams

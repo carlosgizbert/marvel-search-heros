@@ -11,6 +11,7 @@ const colors: T.Colors = {
   gray10: "#E4E5E9",
   gray20: "#C8C9CD",
   white: "#FFF",
+  transparent: "transparent"
 };
 
 const gridSpace: T.GridSpace = {

@@ -1,3 +1,5 @@
+import { Colors } from "@/ui/styles/tokens";
+import { getColorValue } from "@/ui/utils";
 import styled from "styled-components";
 
 export const Box = styled.div<{
@@ -6,6 +8,7 @@ export const Box = styled.div<{
   $paddingY?: number;
   $paddingX?: number;
   $gap?: number;
+  $borderColor?: keyof Colors
   $marginBottom?: number;
   $maxWidth?: string;
   $align?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
@@ -30,4 +33,5 @@ export const Box = styled.div<{
   padding: ${({ $paddingY = 0, $paddingX = 0 }) => `${$paddingY}rem ${$paddingX}rem`};
   margin-bottom: ${({ $marginBottom = 0 }) => `${$marginBottom}rem`};
   gap: ${({ $gap = 1 }) => `${$gap}rem`};
+  border: 1px solid ${({ theme, $borderColor = "transparent" }) => getColorValue(theme, $borderColor)}
 `;

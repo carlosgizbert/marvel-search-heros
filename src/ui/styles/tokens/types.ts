@@ -9,6 +9,7 @@ export type Colors = {
   gray10: string;
   gray20: string;
   white: string;
+  transparent: string;
 };
 
 export type GridSpace = {

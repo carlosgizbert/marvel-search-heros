@@ -12,7 +12,7 @@ export function Comic({ data }: Readonly<ComicProps>) {
   const { title, thumbnail } = data;
 
   return (
-    <S.ComicWrapper>
+    <S.ComicWrapper onClick={() => window.alert("Em breve (:")}>
       <S.Comic>
         <S.Image
           height={240}

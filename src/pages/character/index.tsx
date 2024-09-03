@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
-import { Box } from "@/ui/components/atoms/box";
-import { Navbar } from "./navbar";
 import { useParams } from "react-router-dom";
+
 import { useGetCharacter, useGetComics } from "@/services/characters/hooks";
-import { Typography } from "@/ui/components/atoms/typography";
 import { Character as CharacterDTO } from "@/services/characters/dto/characters";
+
+import { Box } from "@/ui/components/atoms/box";
 import { Comic } from "@/services/characters/dto/comics";
 import { ComicsList } from "@/ui/components/molecules/comics-list";
-import { Skeleton } from "@/ui/components/atoms/skeleton";
-
-import { HeroSkeletons } from "./hero-skeletons";
 import { HearthFilledIcon } from "@/ui/components/atoms/icons";
+import { Skeleton } from "@/ui/components/atoms/skeleton";
+import { Typography } from "@/ui/components/atoms/typography";
+
 import { formatDate } from "@/ui/utils";
+import { HeroSkeletons } from "./hero-skeletons";
+import { Navbar } from "./navbar";
 
 import * as S from "./styles";
 
 export function Character() {
   const [character, setCharacter] = useState<CharacterDTO>();
   const [comics, setComics] = useState<Comic[]>([]);
-  const [lastComicDate, setLastComicDate] = useState<string>("N/D")
-  // const [searchTerm, setSearchTerm] = useState<string>("");
+  const [lastComicDate, setLastComicDate] = useState<string>("N/D");
 
   const { id } = useParams();
 
@@ -50,10 +51,10 @@ export function Character() {
       const responseData = comicsData?.data.results;
       setComics(responseData);
 
-      const lastComicDate = comics[0]?.dates[0].date
-      console.log({lastComicDate})
+      const lastComicDate = comics[0]?.dates[0].date;
+      console.log({ lastComicDate });
       if (lastComicDate !== undefined) {
-        setLastComicDate(formatDate(lastComicDate))
+        setLastComicDate(formatDate(lastComicDate));
       }
     }
   }, [comics, comicsData]);
@@ -83,27 +84,34 @@ export function Character() {
               {character?.description}
             </Typography>
             <Box $direction="row">
-              <Box>
+              <Box $borderColor="gray10" $paddingX={0.5} $paddingY={0.5}>
                 <Typography color="text20">Quadrinhos</Typography>
                 {comicsIsLoading && <Skeleton width={200} height={24} />}
                 {!comicsIsLoading && (
                   <Typography $weight={600}>{comicsQuantity}</Typography>
                 )}
               </Box>
-              <Box>
+              <Box $borderColor="gray10" $paddingX={0.5} $paddingY={0.5}>
                 <Typography color="text20">Filmes</Typography>
                 <Typography $weight={600}>{moviesQuantity}</Typography>
               </Box>
             </Box>
-            <Box $direction="row" $align="center">
-              <Typography color="text20">Rating:</Typography> X X X X X
-            </Box>
-            <Box $direction="row" $align="center">
-              <Typography color="text20">Último quadrinho:</Typography>
-              {comicsIsLoading && <Skeleton width={180} height={24} />}
-              {!comicsIsLoading && (
-                <Typography $weight={600}>{lastComicDate}</Typography>
-              )}
+            <Box
+              $gap={0.5}
+              $borderColor="gray10"
+              $paddingX={0.5}
+              $paddingY={0.5}
+            >
+              <Box $direction="row" $align="center">
+                <Typography color="text20">Rating:</Typography> X X X X X
+              </Box>
+              <Box $direction="row" $align="center">
+                <Typography color="text20">Último quadrinho:</Typography>
+                {comicsIsLoading && <Skeleton width={180} height={24} />}
+                {!comicsIsLoading && (
+                  <Typography $weight={600}>{lastComicDate}</Typography>
+                )}
+              </Box>
             </Box>
           </S.HeroStartContentContainer>
           <S.Image

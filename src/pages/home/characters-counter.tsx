@@ -12,7 +12,7 @@ export function CharactersCounter({ count, isLoading }: Readonly<CharactersCount
   
   const label = () => {
     if (hasMoreThanOneCharacter) {
-      return `mostrando os ${count} primeiros personagens`
+      return `mostrando ${count} personagens`
     }
     if (hasMoreThanOneCharacter) {
       return `mostrando 1 personagem`

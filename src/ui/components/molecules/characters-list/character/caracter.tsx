@@ -3,15 +3,18 @@ import { Box } from "@/ui/components/atoms/box";
 import { Character as CharacterDTO } from "@/services/characters/dto/characters";
 import { HearthFilledIcon, HearthIcon } from "@/ui/components/atoms/icons";
 import { Typography } from "@/ui/components/atoms/typography";
-import { getFavoritesIds, handleFavoritesIds, setFavoritesIds } from "@/ui/utils/favorites";
+import {
+  getFavoritesIds,
+  handleFavoritesIds,
+  MAX_ALLOWED_FAVORITES,
+  setFavoritesIds,
+} from "@/ui/utils/favorites";
 
 import * as S from "./styles";
 
 interface CharacterProps {
   data: CharacterDTO;
 }
-
-const MAX_ALLOWED_FAVORITES = 5;
 
 export function Character({ data }: Readonly<CharacterProps>) {
   const { id, name, thumbnail } = data;
@@ -22,7 +25,10 @@ export function Character({ data }: Readonly<CharacterProps>) {
     setLiked(favorites.includes(id));
   }, [id]);
 
-  const handleFavorite = (e: MouseEvent<SVGSVGElement>, heroId: number) => {
+  const handleFavorite = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+    heroId: number
+  ) => {
     e.preventDefault();
 
     const favorites = getFavoritesIds();
@@ -30,7 +36,7 @@ export function Character({ data }: Readonly<CharacterProps>) {
 
     if (updatedFavorites.length > MAX_ALLOWED_FAVORITES) {
       return window.alert(
-        `Não é possível ter mais que ${MAX_ALLOWED_FAVORITES} favoritos`
+        `Você possui ${MAX_ALLOWED_FAVORITES} heróis favoritados, não é possível favoritar mais heróis.`
       );
     }
 
@@ -54,17 +60,11 @@ export function Character({ data }: Readonly<CharacterProps>) {
           {name}
         </Typography>
         <div>
-          <S.ButtonFavorite>
+          <S.ButtonFavorite onClick={(e) => handleFavorite(e, id)}>
             {liked ? (
-              <HearthFilledIcon
-                color="#ED1D24"
-                onClick={(e) => handleFavorite(e, id)}
-              />
+              <HearthFilledIcon color="#ED1D24" />
             ) : (
-              <HearthIcon
-                color="#ED1D24"
-                onClick={(e) => handleFavorite(e, id)}
-              />
+              <HearthIcon color="#ED1D24" />
             )}
           </S.ButtonFavorite>
         </div>

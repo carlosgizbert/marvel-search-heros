@@ -1,3 +1,6 @@
+export const MAX_ALLOWED_FAVORITES = 5;
+
+
 export const getFavoritesIds = (): number[] => {
   return JSON.parse(
     localStorage.getItem("@search-heros:favorites") ?? "[]"

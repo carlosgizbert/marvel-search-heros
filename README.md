@@ -1,50 +1,27 @@
-# React + TypeScript + Vite
+### Marvel Search Heros
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### objetivo da aplicação
+Buscar, favoritar e classificar heróis da Marvel.
 
-Currently, two official plugins are available:
+### desenvolvido
+* ✔️ buscar heróis
+* ✔️ favoritar herói
+* ✔️ classificar herói
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### principais tecnologias
+* <a href="https://nextjs.org/" about="_blank">ReactJS</a>
+* <a href="https://tanstack.com/query/latest/docs/framework/react/overview">ReactQuery + IndexedDB</a> (Frontend Cache)
+* <a href="https://next-auth.js.org/" about="_blank">Styled Component</a> (CSS in JS)
 
-## Expanding the ESLint configuration
+### como rodar
+Antes de rodar, renomeie o arquivo .env.example para .env e inclua suas Api Keys da Marvel nele.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Após isso, através do terminal, entre na pasta do projeto e rode os comandos abaixo
+###### `1. bun install`
+###### `2. bun run dev`
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### resultado
+![image](https://github.com/user-attachments/assets/496983c3-7616-49e0-86b8-542a702b339e)
+![image](https://github.com/user-attachments/assets/926938fc-68d5-400f-a52c-08a0fa575807)
+![image](https://github.com/user-attachments/assets/74d62ccf-9f5c-4efc-9e4b-1a7fe7fa7440)
+![image](https://github.com/user-attachments/assets/2994a259-6270-4a23-9341-cb517a9fa190)

@@ -5,7 +5,7 @@ import { Toggle } from "@/ui/components/atoms/toggle";
 import { Typography } from "@/ui/components/atoms/typography";
 import { ReactNode } from "react";
 
-import * as S from './styles'
+import * as S from "./styles";
 
 interface FilterControlsProps {
   orderBy: OrderBy;
@@ -26,27 +26,29 @@ export function FilterControls({
       {counterElement}
       <S.EndContent>
         <div>
-        <Box $direction="row" $align="center" $gap={0.5}>
-        <Typography color={disableToggleButton ? "gray20" : "primary10"}>
-          Ordenar por nome - A/Z
-        </Typography>
-        <Toggle
-          id="orderBy"
-          checked={!disableToggleButton}
-          disabled={disableToggleButton}
-          onChange={toggleOrderBy}
-        />
-        </Box>
+          <Box $direction="row" $align="center" $gap={0.5}>
+            <Typography color={disableToggleButton ? "gray20" : "primary10"}>
+              Ordenar por nome - A/Z
+            </Typography>
+            <Toggle
+              id="orderBy"
+              checked={!disableToggleButton}
+              disabled={disableToggleButton}
+              onChange={toggleOrderBy}
+            />
+          </Box>
         </div>
         <div>
-          <Box $direction="row" $align="center" $gap={0.5}>
-            {onlyLiked ? (
-              <HearthFilledIcon color="#ED1D24" />
-            ) : (
-              <HearthIcon color="#ED1D24" />
-            )}
-            <Typography color="primary10">Somente favoritos</Typography>
-          </Box>
+          <S.ButtonFavorite>
+            <Box $direction="row" $align="center" $gap={0.5}>
+              {onlyLiked ? (
+                <HearthFilledIcon color="#ED1D24" />
+              ) : (
+                <HearthIcon color="#ED1D24" />
+              )}
+              <Typography color="primary10">Somente favoritos</Typography>
+            </Box>
+          </S.ButtonFavorite>
         </div>
       </S.EndContent>
     </S.Wrapper>

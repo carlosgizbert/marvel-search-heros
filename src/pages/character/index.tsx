@@ -44,7 +44,7 @@ export function Character() {
 
   const { data: comicsData, isLoading: comicsIsLoading } = useGetComics({
     characterId: id,
-    orderBy: "onsaleDate",
+    orderBy: "-onsaleDate",
     limit: 10,
   });
 

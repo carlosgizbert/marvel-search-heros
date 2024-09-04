@@ -21,13 +21,19 @@ import {
   MAX_ALLOWED_FAVORITES,
 } from "@/ui/utils/favorites";
 
-import * as S from "./styles";
 import { ButtonIcon } from "@/ui/components/atoms/button-icon";
+import { RatingStars } from "@/ui/components/molecules/rating-stars";
+
+import { getRatings, handleRatings, setRatings } from "@/ui/utils/ratings";
+
+import * as S from "./styles";
 
 export function Character() {
   const [character, setCharacter] = useState<CharacterDTO>();
   const [comics, setComics] = useState<Comic[]>([]);
   const [lastComicDate, setLastComicDate] = useState<string>("N/D");
+  const [liked, setLiked] = useState<boolean>(false);
+  const [rating, setRating] = useState<number>(0);
 
   const { id } = useParams();
 
@@ -54,12 +60,24 @@ export function Character() {
       : "Esse herói não possui descrição.";
   }, [character]);
 
-  const [liked, setLiked] = useState(false);
-
   useEffect(() => {
     const favorites = getFavoritesIds();
     setLiked(favorites.includes(Number(id)));
   }, [id]);
+
+  useEffect(() => {
+    if (character) {
+      const ratings = getRatings();
+      if (ratings) {
+        const characterRating = ratings.find(
+          (rating) => rating.id === character?.id
+        );
+        if (characterRating) {
+          setRating(characterRating.rating);
+        }
+      }
+    }
+  }, [character]);
 
   const handleFavorite = (heroId: number) => {
     const favorites = getFavoritesIds();
@@ -76,6 +94,18 @@ export function Character() {
     }
 
     setLiked(!liked);
+  };
+
+  const handleRating = async (rating: number) => {
+    const ratings = await getRatings();
+    const updatedRatings = handleRatings(ratings, {
+      id: Number(character?.id),
+      rating,
+    });
+    if (updatedRatings) {
+      setRatings(updatedRatings);
+      setRating(rating);
+    }
   };
 
   useEffect(() => {
@@ -154,7 +184,8 @@ export function Character() {
               $paddingY={0.5}
             >
               <Box $direction="row" $align="center">
-                <Typography color="text20">Rating:</Typography> X X X X X
+                <Typography color="text20">Rating:</Typography>
+                <RatingStars rating={rating} setRating={handleRating} />
               </Box>
               <Box $direction="row" $align="center">
                 <Typography color="text20">Último quadrinho:</Typography>

@@ -36,7 +36,7 @@ export function Toggle({
         data-testid={dataTestId}
         className="orange-toggle"
         defaultChecked={isChecked}
-        onChange={(e: any) => {
+        onChange={(e) => {
           if (!disabled) {
             setIsChecked(!isChecked)
             if (onChange) onChange(e.target.checked)

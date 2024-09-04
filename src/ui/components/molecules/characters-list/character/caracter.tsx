@@ -10,8 +10,9 @@ import {
   setFavoritesIds,
 } from "@/ui/utils/favorites";
 
-import * as S from "./styles";
 import { ButtonIcon } from "@/ui/components/atoms/button-icon";
+
+import * as S from "./styles";
 
 interface CharacterProps {
   data: CharacterDTO;
@@ -19,13 +20,12 @@ interface CharacterProps {
 
 export function Character({ data }: Readonly<CharacterProps>) {
   const { id, name, thumbnail } = data;
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState<boolean>(false);
 
   useEffect(() => {
     const favorites = getFavoritesIds();
     setLiked(favorites.includes(id));
   }, [id]);
-
   const handleFavorite = (
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
     heroId: number

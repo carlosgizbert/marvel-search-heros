@@ -11,16 +11,24 @@ import { useGetCharacters } from "@/services/characters/hooks";
 import { CharactersCounter } from "./characters-counter";
 import { FilterControls } from "./filter-controls";
 import { Header } from "./header";
+import { getFavoritesIds } from "@/ui/utils/favorites";
 
-const ITEMS_LIMIT: number = 20;
+const MAX_ITEMS_TO_SHOW: number = 20;
 
 export function Home() {
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const [charactersData, setCharactersData] = useState<Character[]>([]);
   const [fieldValue, setFieldValue] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [orderBy, setOrderBy] = useState<OrderBy>("name");
-
+  const [onlyLiked, setOnlyLiked] = useState<boolean>(false);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const charactersList = charactersData.filter((character) => {
+    if (onlyLiked) {
+      return getFavoritesIds().includes(character.id);
+    }
+    return true;
+  })
 
   const hasTermToSearch = searchTerm.length > 0;
   const userQueryParams = useMemo(() => ({
@@ -34,7 +42,7 @@ export function Home() {
     isRefetching,
     refetch,
   } = useGetCharacters({
-    limit: ITEMS_LIMIT,
+    limit: MAX_ITEMS_TO_SHOW,
     ...(hasTermToSearch ? userQueryParams : undefined),
   });
 
@@ -46,13 +54,17 @@ export function Home() {
     });
   }, [fieldValue, refetch, setSearchParams]);
 
+  const toggleOnlyLiked = () => {
+    setOnlyLiked((prev) => !prev)
+  }
+
   const toggleOrderBy = () => setOrderBy(orderBy === "name" ? "-name" : "name");
   const isFetchingData = isLoading || isRefetching;
 
   useEffect(() => {
     const hasResponseData = response?.data.results;
     if (hasResponseData) {
-      setCharacters(response.data.results);
+      setCharactersData(response.data.results);
     }
   }, [response]);
 
@@ -87,16 +99,17 @@ export function Home() {
         <FilterControls
           orderBy={orderBy}
           toggleOrderBy={toggleOrderBy}
-          onlyLiked={false}
+          onlyLiked={onlyLiked}
+          toggleOnlyLiked={() => toggleOnlyLiked()}
           disableToggleButton={searchTerm.length === 0}
           counterElement={
             <CharactersCounter
-              count={characters.length}
+              count={charactersList.length}
               isLoading={isLoading}
             />
           }
         />
-        <CharactersList data={characters} isLoading={isFetchingData} />
+        <CharactersList data={charactersList} isLoading={isFetchingData} />
       </Box>
     </Box>
   );

@@ -10,6 +10,7 @@ import * as S from "./styles";
 interface FilterControlsProps {
   orderBy: OrderBy;
   toggleOrderBy: () => void;
+  toggleOnlyLiked: () => void;
   onlyLiked: boolean;
   disableToggleButton: boolean;
   counterElement: ReactNode;
@@ -17,6 +18,7 @@ interface FilterControlsProps {
 
 export function FilterControls({
   toggleOrderBy,
+  toggleOnlyLiked,
   counterElement,
   onlyLiked,
   disableToggleButton,
@@ -39,7 +41,7 @@ export function FilterControls({
           </Box>
         </div>
         <div>
-          <S.ButtonFavorite>
+          <S.ButtonFavorite onClick={() => toggleOnlyLiked()}>
             <Box $direction="row" $align="center" $gap={0.5}>
               {onlyLiked ? (
                 <HearthFilledIcon color="#ED1D24" />

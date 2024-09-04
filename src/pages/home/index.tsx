@@ -19,7 +19,7 @@ export function Home() {
   const [charactersData, setCharactersData] = useState<Character[]>([]);
   const [fieldValue, setFieldValue] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [orderBy, setOrderBy] = useState<OrderBy>("name");
+  const [orderBy, setOrderBy] = useState<OrderBy>("-modified");
   const [onlyLiked, setOnlyLiked] = useState<boolean>(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -43,6 +43,7 @@ export function Home() {
     refetch,
   } = useGetCharacters({
     limit: MAX_ITEMS_TO_SHOW,
+    orderBy: '-modified',
     ...(hasTermToSearch ? userQueryParams : undefined),
   });
 

@@ -21,7 +21,7 @@ Após isso, através do terminal, entre na pasta do projeto e rode os comandos a
 ###### `2. bun run dev`
 
 ### resultado
-![image](https://github.com/user-attachments/assets/496983c3-7616-49e0-86b8-542a702b339e)
+![image](https://github.com/user-attachments/assets/253f2ac6-72c2-4178-a45e-492454d95e06)
 ![image](https://github.com/user-attachments/assets/926938fc-68d5-400f-a52c-08a0fa575807)
 ![image](https://github.com/user-attachments/assets/74d62ccf-9f5c-4efc-9e4b-1a7fe7fa7440)
 ![image](https://github.com/user-attachments/assets/2994a259-6270-4a23-9341-cb517a9fa190)

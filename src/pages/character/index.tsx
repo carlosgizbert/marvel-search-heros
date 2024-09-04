@@ -183,11 +183,11 @@ export function Character() {
               $paddingX={0.5}
               $paddingY={0.5}
             >
-              <Box $direction="row" $align="center">
+              <Box $direction="row" $align="center" $gap={0.5}>
                 <Typography color="text20">Rating:</Typography>
                 <RatingStars rating={rating} setRating={handleRating} />
               </Box>
-              <Box $direction="row" $align="center">
+              <Box $direction="row" $align="center" $gap={0.5}>
                 <Typography color="text20">Último quadrinho:</Typography>
                 {comicsIsLoading && <Skeleton width="100%" height={24} />}
                 {!comicsIsLoading && (

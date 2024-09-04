@@ -41,7 +41,10 @@ export function CharactersList({
       </S.List>
       {hasMoreThanOne && <Typography color="text20">Final da lista</Typography>}
       {showNotFound && (
-        <Typography color="text20">Nenhum herói encontrado</Typography>
+        <Box $align="center" $gap={0.5}>
+          <Typography color="text10">Nenhum herói encontrado</Typography>
+          <Typography color="text10" $weight={600}>Verifique os filtros ou busque novamente.</Typography>
+        </Box>
       )}
     </Box>
   );

@@ -1,30 +1,26 @@
+import * as S from "./styles";
+
 interface RatingStarsProps {
-  rating: number
-  setRating: (star: number) => void
+  rating: number;
+  setRating: (newRating: number) => void;
 }
 
 export function RatingStars({ rating, setRating }: Readonly<RatingStarsProps>) {
   return (
-    <div>
+    <S.Wrapper>
       {[1, 2, 3, 4, 5].map((star) => {
-        return (  
-          <button
+        return (
+          <S.Star
             key={star}
-            className='start'
-            style={{
-              cursor: 'pointer',
-              color: rating >= star ? 'gold' : 'gray',
-              fontSize: `35px`,
-            }}
+            color={rating >= star ? "primary10" : "gray10"}
             onClick={() => {
-              setRating(star)
+              setRating(star === rating ? 0 : star);
             }}
           >
-            {' '}
-            ★{' '}
-          </button>
-        )
+            ★
+          </S.Star>
+        );
       })}
-    </div>
-  )
+    </S.Wrapper>
+  );
 }

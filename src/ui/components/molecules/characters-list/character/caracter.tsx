@@ -11,6 +11,7 @@ import {
 } from "@/ui/utils/favorites";
 
 import * as S from "./styles";
+import { ButtonIcon } from "@/ui/components/atoms/button-icon";
 
 interface CharacterProps {
   data: CharacterDTO;
@@ -60,13 +61,13 @@ export function Character({ data }: Readonly<CharacterProps>) {
           {name}
         </Typography>
         <div>
-          <S.ButtonFavorite onClick={(e) => handleFavorite(e, id)}>
+          <ButtonIcon onClick={(e) => handleFavorite(e, id)}>
             {liked ? (
               <HearthFilledIcon color="#ED1D24" />
             ) : (
               <HearthIcon color="#ED1D24" />
             )}
-          </S.ButtonFavorite>
+          </ButtonIcon>
         </div>
       </Box>
     </S.CharacterWrapper>

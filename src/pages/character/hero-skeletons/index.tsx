@@ -28,10 +28,10 @@ export function HeroSkeletons() {
         </Box>
         <Box $gap={1}>
           <Box $direction="row" $align="center">
-            <Skeleton width={200} height={24} />
+            <Skeleton width="100%" height={24} />
           </Box>
           <Box $direction="row" $align="center">
-            <Skeleton width={200} height={24} />
+            <Skeleton width="100%" height={24} />
           </Box>
         </Box>
       </S.HeroStartContentContainer>

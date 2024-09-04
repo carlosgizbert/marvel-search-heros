@@ -6,6 +6,7 @@ import { Typography } from "@/ui/components/atoms/typography";
 import { ReactNode } from "react";
 
 import * as S from "./styles";
+import { ButtonIcon } from "@/ui/components/atoms/button-icon";
 
 interface FilterControlsProps {
   orderBy: OrderBy;
@@ -41,7 +42,7 @@ export function FilterControls({
           </Box>
         </div>
         <div>
-          <S.ButtonFavorite onClick={() => toggleOnlyLiked()}>
+          <ButtonIcon onClick={() => toggleOnlyLiked()}>
             <Box $direction="row" $align="center" $gap={0.5}>
               {onlyLiked ? (
                 <HearthFilledIcon color="#ED1D24" />
@@ -50,7 +51,7 @@ export function FilterControls({
               )}
               <Typography color="primary10">Somente favoritos</Typography>
             </Box>
-          </S.ButtonFavorite>
+          </ButtonIcon>
         </div>
       </S.EndContent>
     </S.Wrapper>

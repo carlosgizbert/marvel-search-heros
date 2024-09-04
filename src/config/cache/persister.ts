@@ -4,7 +4,7 @@ import {
   Persister,
 } from '@tanstack/react-query-persist-client'
 
-export function createIDBPersister(idbValidKey: IDBValidKey = 'reactQuery') {
+export function createIDBPersister(idbValidKey: IDBValidKey = '@search-hero:reactQuery') {
   return {
     persistClient: async (client: PersistedClient) => {
       await set(idbValidKey, client)

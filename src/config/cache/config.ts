@@ -4,8 +4,10 @@ export enum CACHE_QUERY_KEYS {
   useGetComics = 'getComics'
 };
 
+const ONE_HOUR_IN_MILISECONDS = 3600000
+
 export const CACHE_QUERY_CONFIG = {
-  staleTime: 120000,
+  staleTime: ONE_HOUR_IN_MILISECONDS,
   refetchOnWindowFocus: false,
   refetchOnReconnect: false,
   retry: 1,

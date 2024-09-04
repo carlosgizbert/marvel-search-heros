@@ -1,6 +1,7 @@
+import styled from "styled-components";
+
 import { Colors } from "@/ui/styles/tokens";
 import { getColorValue } from "@/ui/utils";
-import styled from "styled-components";
 
 export const Box = styled.div<{
   $marginY?: number;
@@ -33,5 +34,6 @@ export const Box = styled.div<{
   padding: ${({ $paddingY = 0, $paddingX = 0 }) => `${$paddingY}rem ${$paddingX}rem`};
   margin-bottom: ${({ $marginBottom = 0 }) => `${$marginBottom}rem`};
   gap: ${({ $gap = 1 }) => `${$gap}rem`};
-  border: 1px solid ${({ theme, $borderColor = "transparent" }) => getColorValue(theme, $borderColor)}
+  border: 1px solid ${({ theme, $borderColor = "transparent" }) => getColorValue(theme, $borderColor)};
+  border-radius: ${({ theme }) => theme.rounded.small};
 `;

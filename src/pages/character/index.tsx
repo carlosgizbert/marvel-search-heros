@@ -22,6 +22,7 @@ import {
 } from "@/ui/utils/favorites";
 
 import * as S from "./styles";
+import { ButtonIcon } from "@/ui/components/atoms/button-icon";
 
 export function Character() {
   const [character, setCharacter] = useState<CharacterDTO>();
@@ -50,7 +51,7 @@ export function Character() {
   const description = useMemo(() => {
     return character?.description
       ? character.description
-      : "Personagem sem descrição";
+      : "Esse herói não possui descrição.";
   }, [character]);
 
   const [liked, setLiked] = useState(false);
@@ -90,7 +91,6 @@ export function Character() {
       setComics(responseData);
 
       const lastComicDate = comics[0]?.dates[0].date;
-      console.log({ lastComicDate });
       if (lastComicDate !== undefined) {
         setLastComicDate(formatDate(lastComicDate));
       }
@@ -122,13 +122,13 @@ export function Character() {
                 <Typography $size={24} $weight={700}>
                   {character.name}
                 </Typography>
-                <S.ButtonFavorite onClick={() => handleFavorite(character.id)}>
+                <ButtonIcon onClick={() => handleFavorite(character.id)}>
                   {liked ? (
                     <HearthFilledIcon color="#ED1D24" />
                   ) : (
                     <HearthIcon color="#ED1D24" />
                   )}
-                </S.ButtonFavorite>
+                </ButtonIcon>
               </Box>
             </div>
             <Typography $lineHeight={1.75} color="text20">
@@ -137,7 +137,7 @@ export function Character() {
             <Box $direction="row">
               <Box $borderColor="gray10" $paddingX={0.5} $paddingY={0.5}>
                 <Typography color="text20">Quadrinhos</Typography>
-                {comicsIsLoading && <Skeleton width={200} height={24} />}
+                {comicsIsLoading && <Skeleton width="100%" height={24} />}
                 {!comicsIsLoading && (
                   <Typography $weight={600}>{comicsQuantity}</Typography>
                 )}
@@ -158,7 +158,7 @@ export function Character() {
               </Box>
               <Box $direction="row" $align="center">
                 <Typography color="text20">Último quadrinho:</Typography>
-                {comicsIsLoading && <Skeleton width={180} height={24} />}
+                {comicsIsLoading && <Skeleton width="100%" height={24} />}
                 {!comicsIsLoading && (
                   <Typography $weight={600}>{lastComicDate}</Typography>
                 )}

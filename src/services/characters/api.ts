@@ -7,7 +7,7 @@ import {
 } from "./dto/characters";
 import { GetComicsQueryParams, GetComicsResponse } from "./dto/comics";
 
-const CHARACTER_API_BASE_URL = `${API_BASE_URL}/v1/public/characters`;
+const CHARACTER_API_BASE_URL = `${API_BASE_URL}/characters`;
 
 export async function getCharacters(params?: GetCharactersQueryParams) {
   let path = CHARACTER_API_BASE_URL;

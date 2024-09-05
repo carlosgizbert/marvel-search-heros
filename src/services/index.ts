@@ -1,7 +1,7 @@
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
 
-export const API_BASE_URL = import.meta.env.VITE_BASE_URL;
+export const API_BASE_URL = import.meta.env.VITE_MARVEL_API;
 export const MARVEL_PUBLIC_KEY = import.meta.env.VITE_MARVEL_PUBLIC_KEY;
 export const MARVEL_PRIVATE_KEY = import.meta.env.VITE_MARVEL_PRIVATE_KEY;
 

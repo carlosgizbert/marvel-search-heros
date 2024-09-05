@@ -1,4 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+    useCallback,
+    useEffect,
+    useMemo,
+    useState
+  } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Box } from "@/ui/components/atoms/box";
@@ -6,11 +11,12 @@ import { Character, OrderBy } from "@/services/characters/dto/characters";
 import { CharactersList } from "@/ui/components/molecules/characters-list";
 import { SearchField } from "@/ui/components/molecules/search-field";
 import { SearchIcon } from "@/ui/components/atoms/icons";
-import { useGetCharacters } from "@/services/characters/hooks";
 
-import { CharactersCounter } from "./characters-counter";
-import { FilterControls } from "./filter-controls";
-import { Header } from "./header";
+import { CharactersCounter } from "./home-characters-counter";
+import { FilterControls } from "./home-filter-controls";
+import { Header } from "./home-header";
+
+import { useGetCharacters } from "@/services/characters/hooks";
 import { getFavoritesIds } from "@/ui/utils/favorites";
 
 const MAX_ITEMS_TO_SHOW: number = 20;

@@ -10,8 +10,8 @@ import { ComicsList } from "@/ui/components/molecules/comics-list";
 import { HearthFilledIcon, HearthIcon } from "@/ui/components/atoms/icons";
 import { Skeleton } from "@/ui/components/atoms/skeleton";
 import { Typography } from "@/ui/components/atoms/typography";
-import { HeroSkeletons } from "./hero-skeletons";
-import { Navbar } from "./navbar";
+import { HeroSkeletons } from "./character-hero-skeletons";
+import { Navbar } from "./character-navbar";
 
 import { formatDate } from "@/ui/utils";
 import {

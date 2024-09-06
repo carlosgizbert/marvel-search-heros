@@ -1,14 +1,14 @@
-import { CharacterSkeleton } from "./character-skeleton";
+import { CharacterSkeleton } from './character-skeleton';
 
 export function CharactersListSkeletons() {
-  return (
-    <>
-      <CharacterSkeleton />
-      <CharacterSkeleton />
-      <CharacterSkeleton />
-      <CharacterSkeleton />
-      <CharacterSkeleton />
-      <CharacterSkeleton />
-    </>
-  );
+	return (
+		<>
+			<CharacterSkeleton />
+			<CharacterSkeleton />
+			<CharacterSkeleton />
+			<CharacterSkeleton />
+			<CharacterSkeleton />
+			<CharacterSkeleton />
+		</>
+	);
 }

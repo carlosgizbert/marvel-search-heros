@@ -4,7 +4,7 @@ import logo from "@/assets/logo.svg";
 
 export function Header() {
   return (
-    <Box $justify="center" $align="center" $maxWidth="720px" $gap={1.5}>
+    <Box id="home-header" $justify="center" $align="center" $maxWidth="720px" $gap={1.5}>
       <Box $direction="row" $align="baseline" $justify="center">
         <img src={logo} alt="Marvel Logo" />
       </Box>

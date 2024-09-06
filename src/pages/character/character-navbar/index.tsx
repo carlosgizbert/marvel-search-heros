@@ -21,7 +21,7 @@ export function Navbar() {
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper id="character-navbar">
       <Box
       $direction="row"
       $justify="center"
@@ -32,6 +32,7 @@ export function Navbar() {
         <img src={logo_menor} alt="Marvel Logo" />
       </Link>
       <SearchField
+        id="character-navbar-search-field"
         $onPressEnter={() => handleSearch()}
         onChange={({ target: { value }}) => setSearchTerm(value)}
         value={searchTerm}

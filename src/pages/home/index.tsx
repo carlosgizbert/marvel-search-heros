@@ -94,6 +94,7 @@ export function Home() {
       <Header />
       <Box $maxWidth="720px">
         <SearchField
+          id="home-search-field"
           placeholder="Procurar heróis ..."
           value={fieldValue}
           onChange={({ target: { value } }) => setFieldValue(value)}
@@ -116,7 +117,7 @@ export function Home() {
             />
           }
         />
-        <CharactersList data={charactersList} isLoading={isFetchingData} />
+        <CharactersList id="home-character-list" data={charactersList} isLoading={isFetchingData} />
       </Box>
     </Box>
   );

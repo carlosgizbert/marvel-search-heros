@@ -31,7 +31,8 @@
       "@/routes/*": ["src/routes/*"],
       "@/assets/*": ["src/assets/*"],
       "@/utils/*": ["src/utils/*"],
+      "@/cy/*": ["cypress/*"],
     },
   },
-  "include": ["src"]
+  "include": ["src", "cypress/**/*.ts"],
 }

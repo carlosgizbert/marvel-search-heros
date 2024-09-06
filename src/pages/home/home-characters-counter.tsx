@@ -20,7 +20,7 @@ export function CharactersCounter({ count, isLoading }: Readonly<CharactersCount
   }
 
   return (
-    <Box>
+    <Box id="home-characters-counter">
       {isLoading ? (
         <Skeleton height={24} width={200} />
       ) : (

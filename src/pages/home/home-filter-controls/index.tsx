@@ -25,11 +25,11 @@ export function FilterControls({
   disableToggleButton,
 }: Readonly<FilterControlsProps>) {
   return (
-    <S.Wrapper>
+    <S.Wrapper id="home-filter-controls">
       {counterElement}
       <S.EndContent>
         <div>
-          <Box $direction="row" $align="center" $gap={0.5}>
+          <Box id="home-filter-controls-orderBy" $direction="row" $align="center" $gap={0.5}>
             <Typography color={disableToggleButton ? "gray20" : "primary10"}>
               Ordenar por nome - A/Z
             </Typography>
@@ -42,7 +42,7 @@ export function FilterControls({
           </Box>
         </div>
         <div>
-          <ButtonIcon onClick={() => toggleOnlyLiked()}>
+          <ButtonIcon id="home-filter-controls-button-like" onClick={() => toggleOnlyLiked()}>
             <Box $direction="row" $align="center" $gap={0.5}>
               {onlyLiked ? (
                 <HearthFilledIcon color="#ED1D24" />

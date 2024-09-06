@@ -9,6 +9,7 @@ import { Paths } from "@/routes/paths";
 import * as S from "./styles";
 
 interface CharactersListProps {
+  id: string
   data: CharacterDTO[];
   isLoading: boolean;
 }
@@ -16,6 +17,7 @@ interface CharactersListProps {
 export function CharactersList({
   data,
   isLoading,
+  id,
 }: Readonly<CharactersListProps>) {
   const showList = !isLoading && data;
   const showSkeletons = isLoading;
@@ -23,8 +25,8 @@ export function CharactersList({
   const showNotFound = !isLoading && data.length === 0;
 
   return (
-    <Box $gap={3} $justify="center" $align="center">
-      <S.List>
+    <Box id={id} $gap={3} $justify="center" $align="center">
+      <S.List id="home-character-list-characters">
         {showSkeletons && <CharactersListSkeletons />}
         {showList &&
           data.map((character) => {
@@ -34,7 +36,7 @@ export function CharactersList({
                 to={`${Paths.CHARACTER_DETAILS}/${character.id}`}
                 style={{ textDecoration: "none" }}
               >
-                <Character key={character.id} data={character} />;
+                <Character key={character.id} data={character} />
               </Link>
             );
           })}

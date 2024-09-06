@@ -1,38 +1,38 @@
-import { DefaultTheme } from 'styled-components';
-import { Colors } from '../styles/tokens';
+import { DefaultTheme } from "styled-components";
+import { Colors } from "../styles/tokens";
 
 export const getColorValue = (theme: DefaultTheme, color: string) => {
-	const colorKey = (c: string) => c as keyof Colors;
-	return theme.colors[colorKey(color)] || color;
+  const colorKey = (c: string) => c as keyof Colors;
+  return theme.colors[colorKey(color)] || color;
 };
 
 export const hexToRgba = (hex: string, opacity = 1) => {
-	const bigint = parseInt(hex.slice(1), 16);
-	const r = (bigint >> 16) & 255;
-	const g = (bigint >> 8) & 255;
-	const b = bigint & 255;
+  const bigint = parseInt(hex.slice(1), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
 
-	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
 
 export function formatDateToISO(dateString: string): string {
-	const date = new Date(dateString);
-	return date.toISOString();
+  const date = new Date(dateString);
+  return date.toISOString();
 }
 
 export function formatDate(dateString: string): string {
-	const date = new Date(dateString);
+  const date = new Date(dateString);
 
-	if (isNaN(date.getTime())) {
-		return 'N/D';
-	}
+  if (isNaN(date.getTime())) {
+    return "N/D";
+  }
 
-	const formatter = new Intl.DateTimeFormat('pt-BR', {
-		day: '2-digit',
-		month: 'short',
-		year: 'numeric',
-	});
+  const formatter = new Intl.DateTimeFormat("pt-BR", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 
-	const formattedDate = formatter.format(date).replace('.', '');
-	return formattedDate;
+  const formattedDate = formatter.format(date).replace(".", "");
+  return formattedDate;
 }

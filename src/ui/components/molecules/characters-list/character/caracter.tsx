@@ -61,7 +61,7 @@ export function Character({ data }: Readonly<CharacterProps>) {
           {name}
         </Typography>
         <div>
-          <ButtonIcon onClick={(e) => handleFavorite(e, id)}>
+          <ButtonIcon id={`home-character-button-like-${id}`} onClick={(e) => handleFavorite(e, id)}>
             {liked ? (
               <HearthFilledIcon color="#ED1D24" />
             ) : (

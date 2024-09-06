@@ -7,7 +7,7 @@ import { Character as CharacterDTO } from "@/services/characters/dto/characters"
 import { Box } from "@/ui/components/atoms/box";
 import { Comic } from "@/services/characters/dto/comics";
 import { ComicsList } from "@/ui/components/molecules/comics-list";
-import { HearthFilledIcon, HearthIcon } from "@/ui/components/atoms/icons";
+import { ComicIcon, HearthFilledIcon, HearthIcon, TrailerIcon } from "@/ui/components/atoms/icons";
 import { Skeleton } from "@/ui/components/atoms/skeleton";
 import { Typography } from "@/ui/components/atoms/typography";
 import { HeroSkeletons } from "./character-hero-skeletons";
@@ -149,7 +149,7 @@ export function Character() {
           <S.HeroStartContentContainer>
             <div>
               <Box $direction="row" $align="center" $justify="space-between">
-                <Typography $size={24} $weight={700}>
+                <Typography $size={24} $weight={700} $lineHeight={2.25}>
                   {character.name}
                 </Typography>
                 <ButtonIcon onClick={() => handleFavorite(character.id)}>
@@ -165,21 +165,26 @@ export function Character() {
               {description}
             </Typography>
             <Box $direction="row">
-              <Box $borderColor="gray10" $paddingX={0.5} $paddingY={0.5}>
+              <Box $paddingX={0.5} $paddingY={0.5}>
                 <Typography color="text20">Quadrinhos</Typography>
                 {comicsIsLoading && <Skeleton width="100%" height={24} />}
                 {!comicsIsLoading && (
-                  <Typography $weight={600}>{comicsQuantity}</Typography>
+                  <Box $direction="row" $align="center" $gap={1}>
+                    <ComicIcon height={32} />
+                    <Typography $weight={600}>{comicsQuantity}</Typography>
+                  </Box>
                 )}
               </Box>
-              <Box $borderColor="gray10" $paddingX={0.5} $paddingY={0.5}>
+              <Box $paddingX={0.5} $paddingY={0.5}>
                 <Typography color="text20">Filmes</Typography>
-                <Typography $weight={600}>{moviesQuantity}</Typography>
+                <Box $direction="row" $align="center" $gap={1}>
+                  <TrailerIcon />
+                  <Typography $weight={600}>{moviesQuantity}</Typography>
+                </Box>
               </Box>
             </Box>
             <Box
               $gap={0.5}
-              $borderColor="gray10"
               $paddingX={0.5}
               $paddingY={0.5}
             >

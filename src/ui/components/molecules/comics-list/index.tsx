@@ -7,6 +7,7 @@ import { Comic } from "./comic/comic";
 import * as S from "./styles";
 
 interface ComicsSkeletonsProps {
+  id: string;
   data: ComicDTO[];
   isLoading: boolean;
 }
@@ -25,6 +26,7 @@ function ComicsSkeletons() {
 }
 
 export function ComicsList({
+  id,
   data,
   isLoading,
 }: Readonly<ComicsSkeletonsProps>) {
@@ -34,7 +36,7 @@ export function ComicsList({
   const showNotFound = !isLoading && data.length === 0;
 
   return (
-    <Box $gap={3} $justify="center" $align="center">
+    <Box id={id} $gap={3} $justify="center" $align="center">
       <S.List>
         {showSkeletons && <ComicsSkeletons />}
         {showList &&

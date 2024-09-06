@@ -96,8 +96,8 @@ export function Character() {
     setLiked(!liked);
   };
 
-  const handleRating = async (rating: number) => {
-    const ratings = await getRatings();
+  const handleRating = (rating: number) => {
+    const ratings = getRatings();
     const updatedRatings = handleRatings(ratings, {
       id: Number(character?.id),
       rating,
@@ -149,10 +149,10 @@ export function Character() {
           <S.HeroStartContentContainer>
             <div>
               <Box $direction="row" $align="center" $justify="space-between">
-                <Typography $size={24} $weight={700} $lineHeight={2.25}>
+                <Typography id="character-name" $size={24} $weight={700} $lineHeight={2.25}>
                   {character.name}
                 </Typography>
-                <ButtonIcon onClick={() => handleFavorite(character.id)}>
+                <ButtonIcon id="character-like-button" onClick={() => handleFavorite(character.id)}>
                   {liked ? (
                     <HearthFilledIcon color="#ED1D24" />
                   ) : (
@@ -190,7 +190,7 @@ export function Character() {
             >
               <Box $direction="row" $align="center" $gap={0.5}>
                 <Typography color="text20">Rating:</Typography>
-                <RatingStars rating={rating} setRating={handleRating} />
+                <RatingStars id="character-rating-stars" rating={rating} setRating={handleRating} />
               </Box>
               <Box $direction="row" $align="center" $gap={0.5}>
                 <Typography color="text20">Último quadrinho:</Typography>
@@ -201,9 +201,7 @@ export function Character() {
               </Box>
             </Box>
           </S.HeroStartContentContainer>
-          <S.Image
-            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-          />
+          <S.Image src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
         </S.Hero>
       )}
       <Box $marginY={1}>
@@ -213,7 +211,7 @@ export function Character() {
             Últimos {comics.length} lançamentos
           </Typography>
         )}
-        <ComicsList data={comics} isLoading={comicsIsLoading} />
+        <ComicsList id="character-comic-list" data={comics} isLoading={comicsIsLoading} />
       </Box>
     </Box>
   );

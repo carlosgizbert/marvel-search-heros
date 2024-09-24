@@ -30,7 +30,7 @@ VITE_MARVEL_PRIVATE_KEY=''
 
 ### Após isso, através do terminal, entre na pasta do projeto e rode os comandos abaixo
 
-`1. npm run install`
+`1. npm install`
 
 `2. npm run dev`
 
